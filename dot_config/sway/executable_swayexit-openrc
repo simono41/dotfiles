@@ -1,0 +1,34 @@
+#!/bin/sh
+lock() {
+    i3lock
+}
+
+case "$1" in
+    lock)
+        swaylock -c 000000
+        ;;
+    logout)
+        killall sway
+        ;;
+    suspend)
+        echo -n mem | sudo tee --append /sys/power/state
+        #lock && dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Suspend
+        ;;
+    hibernate)
+        echo -n disk | sudo tee --append /sys/power/state
+        #lock && dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.UPower /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
+        ;;
+    reboot)
+        sudo openrc-shutdown --reboot now
+        #dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart
+        ;;
+    shutdown)
+        sudo openrc-shutdown --poweroff now
+        #dbus-send --system --print-reply --type=method_call --reply-timeout=2000 --dest=org.freedesktop.ConsoleKit /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
+        ;;
+    *)
+        echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+        exit 2
+esac
+
+exit 0

@@ -1,0 +1,5 @@
+if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+  export XKB_DEFAULT_LAYOUT=us,de
+  export XKB_DEFAULT_OPTIONS=grp:win_space_toggle
+  sway
+fi

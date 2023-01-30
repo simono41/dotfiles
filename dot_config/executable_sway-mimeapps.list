@@ -1,0 +1,5 @@
+[Default Applications]
+inode/directory=pcmanfm-qt.desktop
+text/x-log=vim.desktop
+image/png=lximage-qt.desktop
+application/pdf=org.gnome.Evince.desktop

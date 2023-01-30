@@ -1,0 +1,45 @@
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+    # First make sure dbus is started
+
+    if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+        export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
+    fi
+    echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+
+    # Set XDG_RUNTIME_DIR
+    # Paragraph modified from https://wiki.gentoo.org/wiki/Sway
+    if [ -z "${XDG_RUNTIME_DIR}" ]; then
+        export XDG_RUNTIME_DIR="/tmp/${UID}-runtime-dir"
+        if ! [ -d "${XDG_RUNTIME_DIR}" ]; then
+            mkdir "${XDG_RUNTIME_DIR}"
+            chmod 0700 "${XDG_RUNTIME_DIR}"
+        fi
+    fi
+
+    # Enable SSH agent
+    eval $(keychain --noask --eval --quiet)
+
+    # Various exports
+
+    export SHELL="$(command -v zsh)"
+
+    export QT_QPA_PLATFORMTHEME=qt5ct
+    export QT_QPA_PLATFORM=wayland
+    export GDK_BACKEND=wayland
+    export XDG_SESSION_TYPE=wayland
+    export XDG_CURRENT_DESKTOP=sway
+    export WLR_NO_HARDWARE_CURSORS=1
+
+    export _JAVA_AWT_WM_NONREPARENTING=1 #Make java programs work somewhat
+
+    export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
+    export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
+
+    export PATH="$PATH:~/.local/bin/"
+    export PATH="$PATH:~/go/bin/"
+    export PATH="$PATH:~/.local/share/flatpak/exports/bin/"
+
+    #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/
+
+    exec sway
+fi
