@@ -1,103 +1,121 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+autoload -U promptinit; promptinit; 
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+autoload -U compinit
+compinit
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' rehash true
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="bira"
+autoload -U select-word-style
+select-word-style bash
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+setopt auto_cd
+setopt HIST_IGNORE_SPACE
+setopt interactive_comments
+setopt inc_append_history
+setopt share_history
+setopt AUTO_PUSHD          
+setopt PUSHD_IGNORE_DUPS    
+setopt PUSHD_SILENT         
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
 
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HISTFILE=~/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000
 
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+bindkey "^[[H" beginning-of-line # HOME
+bindkey "^[[F" end-of-line # END
+bindkey "^[[3~" delete-char # DEL
+bindkey -M emacs '\e#' pound-insert # ALT+#
+bindkey '^R' history-incremental-pattern-search-backward
 
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
+mem() {
+  echo $(echo $(smem -t -P $1 | tail -n 1 | rev | cut -d ' ' -f 2 | rev) / 1024 | bc) MB
+}
 
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
+alias eZ="vim ~/.zshrc"
+alias eI="vim ~/.config/i3/config"
+alias eW="vim ~/.config/wezterm/wezterm.lua"
+alias eI="vim ~/.config/i3/config"
+alias eV="vim ~/.vimrc"
+alias eS="vim ~/.config/starship.toml"
+alias wetter="curl http://v3.wttr.in/Hessen.sxl; sleep 5; curl http://v1.wttr.in/Hanau"
+alias history="history 0"
+alias etcher="usbimager"
+alias ls='ls --color=auto'
+alias s='the-way search'
 
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+function deepl
+{
+  args="$*"
+  echo "$args"
+  echo "$args" | command deepl -s --to en
+}
 
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+alias deepl="noglob deepl"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+function rm
+{
+  /bin/rm $@ -I
+}
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
+function ask
+{
+  args="$*"
+  ai ask "$args"
+}
 
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
+alias ask="noglob ask"
+alias chatgpt="noglob chatgpt --"
+alias history="history | fzf"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
+function imgcat()
+{
+  local CNT=0
+  local IFS=$'\n'
+  local posY=$(($(echo -e "cols" | tput -S) / 2))
+  local posX=$(($(echo -e "lines" | tput -S) / 4))
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+  for i in $(find $1 -type f -exec file --mime-type {} \+ | awk -F: '{if ($2 ~/image\//) print $1}'); do
+    CNT=$((CNT+1))
+    if test $(($CNT % 2)) -eq 0 && test "$2" != "-1"; then
+      printf "\033[${posX}A"
+      printf "\033[${posY}C"
+      echo -e "==== $(basename $i) ===="
+      printf "\033[${posY}C"
+    else
+      echo -e "==== $(basename $i) ===="
+    fi
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract web-search git-extras docker pass)
+    if echo "$i" | grep -e ".svg$" &> /dev/null; then
+      ffmpeg -i "$i" -vf scale=640:-1 -f image2pipe -vcodec png - 2> /dev/null | wezterm imgcat --height 20%
+    else
+      wezterm imgcat --height 20% "$i";
+    fi
+  done
+}
 
-source $ZSH/oh-my-zsh.sh
+function cmdsave() {
+  PREV=$(fc -lrn | head -n 1)
+  sh -c "the-way cmd `printf %q "$PREV"`"
+}
 
-# User configuration
+function cmdsearch() {
+  BUFFER=$(the-way search --stdout --languages="sh")
+  print -z $BUFFER
+}
 
-# export MANPATH="/usr/local/man:$MANPATH"
+export PATH="$PATH:$HOME/.local/bin:$HOME/repos/scripts/helper"
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/fzf/key-bindings.zsh
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+export EDITOR="vim"
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+eval "$(starship init zsh)"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-#eval "$(starship init zsh)"

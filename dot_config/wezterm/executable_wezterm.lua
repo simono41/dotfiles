@@ -1,132 +1,176 @@
-local wezterm = require "wezterm"
+local wezterm = require 'wezterm'
+local act = wezterm.action
 
-local my_colors = {
-    a = { fg = "#24283b", bg = "#7aa2f7" },
-    b = { fg = "#7aa2f7", bg = "#3b4261" },
-    c = { fg = "#828bb8", bg = "#1e2030" }
+mb = {
 }
 
-local separators = {
-    main = { left = '', right = '' },
-    sub = { left = '', right = '' },
-}
-
-wezterm.on(
-    'format-tab-title',
-    function(tab, tabs, panes, config, hover, max_width)
-        local tab_title = {
-            st = " " .. tab.active_pane.title .. " ",
-            bg = my_colors.b.bg,
-            fg = my_colors.b.fg,
-        }
-        local separator = {
-            st = separators.sub.left,
-            bg = my_colors.b.bg,
-            fg = my_colors.b.fg,
-        }
-        if tab.is_active then
-            tab_title.bg = my_colors.a.bg
-            tab_title.fg = my_colors.a.fg
-            separator.st = separators.main.left
-            separator.fg = my_colors.a.bg
-            if tab.tab_index + 1 == #tabs then
-                separator.bg = my_colors.c.bg
-            else
-                separator.bg = my_colors.b.bg
-            end
-        else
-            if tab.tab_index + 1 == #tabs then
-                separator.st = separators.main.left
-                separator.fg = my_colors.b.bg
-                separator.bg = my_colors.c.bg
-            elseif tabs[tab.tab_index + 2].is_active then
-                separator.st = separators.main.left
-                separator.fg = my_colors.b.bg
-                separator.bg = my_colors.a.bg
-            end
-        end
-        return {
-            { Background = { Color = tab_title.bg } },
-            { Foreground = { Color = tab_title.fg } },
-            { Text = tab_title.st },
-            { Background = { Color = separator.bg } },
-            { Foreground = { Color = separator.fg } },
-            { Text = separator.st }
-        }
-    end
-)
-
-wezterm.on(
-    'update-right-status',
-    function(window, pane)
-        local date_format = " %I:%M %p " .. separators.sub.right .. " %A " .. separators.sub.right .. " %B %-d "
-        local date = wezterm.strftime(date_format)
-        local bat = " "
-        for _, b in ipairs(wezterm.battery_info()) do
-            if b.state == "Charging" then
-                bat = bat .. ""
-            elseif b.state == "Unknown" then
-                bat = bat .. ""
-            elseif b.state_of_charge <= 0.2 then
-                bat = bat .. ""
-            else
-                bat = bat .. ""
-            end
-            bat = bat .. string.format('%.0f%%', b.state_of_charge * 100) .. " "
-        end
-        window:set_right_status(
-            wezterm.format {
-                { Foreground = { Color = my_colors.b.bg } },
-                { Background = { Color = my_colors.c.bg } },
-                { Text = separators.main.right },
-                { Foreground = { Color = my_colors.b.fg } },
-                { Background = { Color = my_colors.b.bg } },
-                { Text = bat },
-                { Foreground = { Color = my_colors.a.bg } },
-                { Background = { Color = my_colors.b.bg } },
-                { Text = separators.main.right },
-                { Foreground = { Color = my_colors.a.fg } },
-                { Background = { Color = my_colors.a.bg } },
-                { Text = date },
-            }
-        )
-    end
-)
+for i = 1,99,1 
+do 
+  table.insert(mb,
+  {
+    event = { Down = { streak = i, button = 'Middle' } },
+    mods = 'NONE',
+    action = act.PasteFrom("PrimarySelection")
+  })
+  table.insert(mb, {
+    event = { Down = { streak = i, button = 'Right' } },
+       mods = 'NONE',
+       action = wezterm.action_callback(function(window, pane)
+         local has_selection = window:get_selection_text_for_pane(pane) ~= ''
+         if has_selection then
+           window:perform_action(
+             act.CopyTo 'ClipboardAndPrimarySelection',
+             pane
+           )
+   
+           window:perform_action(act.ClearSelection, pane)
+         else
+           window:perform_action(act.PasteFrom("PrimarySelection"), pane)
+         end
+       end),
+     })
+end
 
 return {
-    colors = {
-        tab_bar = {
-            background = my_colors.c.bg,
-            active_tab = {
-                bg_color = my_colors.a.bg,
-                fg_color = my_colors.a.fg
-            },
-            inactive_tab = {
-                bg_color = my_colors.c.bg,
-                fg_color = my_colors.c.fg
-            },
-            new_tab = {
-                bg_color = my_colors.c.bg,
-                fg_color = my_colors.c.fg
-            }
-        }
+  pane_focus_follows_mouse = false,
+  mouse_bindings = mb,
+--  leader = { key = 'VoidSymbol', timeout_milliseconds = 1000 },
+  keys = {
+--    {
+--      key = 'c',
+--      mods = 'CTRL|SHIFT',
+--      action = wezterm.action.SpawnCommandInNewTab {
+--        args = { 'zsh' },
+--        cwd = '~'
+--      },
+--    },
+    {
+      key = 't',
+      mods = 'CTRL|SHIFT',
+      action = wezterm.action.SpawnCommandInNewTab {
+        args = { 'zsh' },
+        cwd = '~'
+      },
     },
-    use_fancy_tab_bar = false,
-    tab_bar_at_bottom = true,
-    tab_max_width = 100,
-    font_size = 11.0,
-    font = wezterm.font_with_fallback {
-        "JetBrains Mono",
-        "HackGenNerd Console"
+    {
+      key = 'f',
+      mods = 'CTRL',
+      action = wezterm.action.TogglePaneZoomState,
     },
-    use_ime = true,
-    color_scheme = "tokyonight-storm",
-    initial_cols = 140,
-    initial_rows = 39,
-    window_padding = {
-        right = 0,
-        left = 0,
-        top = 0,
-        bottom = 0,
+--    {
+--      key = 'p',
+--      mods = 'LEADER',
+--      action = act.ActivateTabRelative(-1),
+--    },
+--    {
+--      key = 'n',
+--      mods = 'LEADER',
+--      action = act.ActivateTabRelative(1),
+--    },
+    {
+      key = 'LeftArrow',
+      mods = 'CTRL|SHIFT',
+      action = act.ActivateTabRelative(-1),
     },
+    {
+      key = 'RightArrow',
+      mods = 'CTRL|SHIFT',
+      action = act.ActivateTabRelative(1),
+    },
+    {
+      key = '2',
+      mods = 'CTRL',
+      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+    },
+    {
+      key = '2',
+      mods = 'LEADER',
+      action = wezterm.action.SplitVertical { domain = 'CurrentPaneDomain' },
+    },
+    {
+      key = '5',
+      mods = 'CTRL',
+      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    },
+    {
+      key = '5',
+      mods = 'LEADER',
+      action = wezterm.action.SplitHorizontal { domain = 'CurrentPaneDomain' },
+    },
+    {
+      key = 'LeftArrow',
+      mods = 'CTRL',
+      action = act.ActivatePaneDirection 'Left',
+    },
+    {
+      key = 'RightArrow',
+      mods = 'CTRL',
+      action = act.ActivatePaneDirection 'Right',
+    },
+    {
+      key = 'UpArrow',
+      mods = 'CTRL',
+      action = act.ActivatePaneDirection 'Up',
+    },
+    {
+      key = 'DownArrow',
+      mods = 'CTRL',
+      action = act.ActivatePaneDirection 'Down',
+    }
+  },
+  window_padding = {
+    left = 2,
+    right = 2,
+    top = 0,
+    bottom = 0,
+  },
+  window_frame = {
+    border_left_width = '0.5cell',
+    border_right_width = '0.5cell',
+  },
+  window_background_opacity = 0.97,
+  window_decorations = "NONE",
+  tab_bar_at_bottom = true,
+  hide_tab_bar_if_only_one_tab = false,
+  use_fancy_tab_bar = false,
+  scrollback_lines = 999999,
+  enable_scroll_bar = false,
+  adjust_window_size_when_changing_font_size=false,
+  font =  wezterm.font_with_fallback({"Hack", "Twemoji"}),
+  font_size = 15,
+  force_reverse_video_cursor = false,
+  colors = {
+    ansi = {
+        '#1d1f21',
+        '#cc6666',
+        '#b5bd68',
+        '#f0c674',
+        '#81a2be',
+        '#b294bb',
+        '#8abeb7',
+        '#c5c8c6'
+    },
+    background = '#1d1f21',
+    brights = {
+        '#969896',
+        '#cc6666',
+        '#b5bd68',
+        '#f0c674',
+        '#81a2be',
+        '#b294bb',
+        '#8abeb7',
+        '#ffffff'
+    },
+    foreground = '#c5c8c6',
+    selection_bg = '#373b41',
+    selection_fg = '#c5c8c6',
+    cursor_bg = '#c5c8c6',
+    cursor_border = '#c5c8c6',
+    cursor_fg = '#1d1f21',
+  },
+--    color_scheme = 'Catppuccin Macchiato',
+--  default_cursor_style = 'BlinkingBlock',
+--  cursor_blink_rate = 500,
+--  animation_fps = 100,
+--  front_end = "Software",
 }

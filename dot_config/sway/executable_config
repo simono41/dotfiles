@@ -30,8 +30,9 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 #font pango:Terminus (TTF) Bold 12
-font pango:Hack Nerd Font 13
+#font pango:Hack Nerd Font 13
 #font pango:Hack 12
+font pango:monospaced 12
 
 # window colors
 #                       border              background         text                 indicat>
@@ -236,9 +237,10 @@ bindsym $mod+r mode "resize"
 bar {
     swaybar_command /usr/bin/swaybar
     #font pango:Terminus (TTF) Bold 12
-    font pango:Hack Nerd Font 13
+    #font pango:Hack Nerd Font 13
     #font pango:Hack 12
     #font pango:DejaVu Sans Mono, FontAwesome 12
+    font pango:MesloLGM Nerd Font Bold 13
 
     position top
     status_command i3status-rs ~/.config/i3status-rust/config.toml
