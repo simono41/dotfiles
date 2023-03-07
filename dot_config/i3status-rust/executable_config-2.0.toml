@@ -1,0 +1,71 @@
+[theme]
+name = "slick"
+[theme.overrides]
+idle_bg = "#2f343f"
+idle_fg = "#f3f4f5"
+
+[icons]
+name = "awesome"
+#[icons.overrides]
+#bat = " | | "
+#bat_full = " |X| "
+#bat_charging = " |^| "
+#bat_discharging = " |v| "
+
+[[block]]
+block = "networkmanager"
+on_click = "wezterm start nmtui"
+interface_name_exclude = ["br\\-[0-9a-f]{12}", "docker\\d+"]
+interface_name_include = []
+device_format = "{icon} {ap} {ips}"
+ap_format = "{ssid} {strength}"
+
+#[[block]]
+#block = "net"
+#on_click = "wezterm start nmtui"
+#device = "wlan0"
+#format = " {ssid} {signal_strength} {ip} {speed_down;K*b} {graph_down:8;M*_b#50}"
+#interval = 1
+
+[[block]]
+block = "disk_space"
+path = "/"
+alias = "/"
+info_type = "available"
+unit = "GB"
+interval = 20
+warning = 20.0
+alert = 10.0
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_used_percents}"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "cpu"
+interval = 1
+format = "{barchart} {utilization} {frequency}"
+
+[[block]]
+block = "load"
+interval = 1
+format = "{1m}"
+
+[[block]]
+block = "sound"
+on_click = "pavucontrol-qt"
+
+[[block]]
+block = "time"
+interval = 1
+format = "%a %Y-%m-%d %H:%M:%S"
+
+[[block]]
+block = "uptime"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage} {time}"
