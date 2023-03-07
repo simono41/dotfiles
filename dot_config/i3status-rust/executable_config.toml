@@ -15,6 +15,17 @@ icons = "awesome4"
 #bat_discharging = " |v| "
 
 [[block]]
+block = "net"
+format = " $icon  {$signal_strength $ip $ssid $frequency ^icon_net_down $speed_down.eng(prefix:K) ^icon_net_up $speed_up.eng(prefix:K)|Wired connection} via $device "
+[[block.click]]
+button = "left"
+cmd = "wezterm start nmtui"
+
+[[block]]
+block = "external_ip"
+format = " $ip $country_code "
+
+[[block]]
 block = "cpu"
 interval = 1
 format = " $icon $barchart $utilization "
@@ -48,6 +59,16 @@ interval = 5
 format = " $timestamp.datetime(f:'%a %Y-%m-%d %H:%M:%S') "
 
 [[block]]
+block = "hueshift"
+hue_shifter = "wl_gammarelay_rs"
+step = 50
+click_temp = 3500
+
+[[block]]
+block = "backlight"
+format = " $brightness "
+
+[[block]]
 block = "battery"
 format = " $icon $percentage {$time |}"
-
+missing_format = ""
