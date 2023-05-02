@@ -266,6 +266,13 @@ input * {
       tap enabled
       natural_scroll disabled
       middle_emulation enabled
+
+      # Flat or adaptative
+      accel_profile adaptive
+
+      # Between -1.0 and 1.0
+      pointer_accel 0.4
+
       repeat_rate 100
       repeat_delay 250
       xkb_layout de
@@ -278,10 +285,12 @@ seat seat0 xcursor_theme capitaine-cursors 16
 # display resoulution
 output eDP-1 pos 0 0 res 1920x1080
 
-exec_always import-gsettings \
-    gtk-theme:Arc-Dark \
-    icon-theme:Arc \
-    cursor-theme:capitaine-cursors
+exec_always {
+    gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
+    gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark
+    gsettings set org.gnome.desktop.interface icon-theme Arc
+    gsettings set org.gnome.desktop.wm.preferences theme "Arc-Dark"
+}
 
 # background
 output "*" background ~/desktop-bilder/background.jpg fill
@@ -451,64 +460,17 @@ bindsym $mod+p exec wlogout -p layer-shell
 # https://wiki.archlinux.org/index.php/i3#Shutdown.2C_reboot.2C_lock_screen
 set $mode_system System (1) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (d) shutdown
 mode "$mode_system" {
-    bindsym 1 exec --no-startup-id ~/scripte/swayexit lock, mode "default"
-    bindsym e exec --no-startup-id ~/scripte/swayexit logout, mode "default"
-    bindsym s exec --no-startup-id ~/scripte/swayexit suspend, mode "default"
-    bindsym h exec --no-startup-id ~/scripte/swayexit hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/scripte/swayexit reboot, mode "default"
-    bindsym d exec --no-startup-id ~/scripte/swayexit shutdown, mode "default"
+    bindsym 1 exec --no-startup-id ~/.config/sway/swayexit lock, mode "default"
+    bindsym e exec --no-startup-id ~/.config/sway/swayexit logout, mode "default"
+    bindsym s exec --no-startup-id ~/.config/sway/swayexit suspend, mode "default"
+    bindsym h exec --no-startup-id ~/.config/sway/swayexit hibernate, mode "default"
+    bindsym r exec --no-startup-id ~/.config/sway/swayexit reboot, mode "default"
+    bindsym d exec --no-startup-id ~/.config/sway/swayexit shutdown, mode "default"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 bindsym $mod+x mode "$mode_system"
-
-set $backlight_system Brightness (1) 10%, (2) 20%, (3) 30%, (4) 40%, (5) 50%, (6) 60%, (7) 70%, (8) 80%, (9) 100%, (0) 0%
-mode "$backlight_system" {
-    bindsym 1 exec "~/.config/i3/backlight_system.sh 50 500"
-    bindsym 2 exec "~/.config/i3/backlight_system.sh 75 700"
-    bindsym 3 exec "~/.config/i3/backlight_system.sh 100 900"
-    bindsym 4 exec "~/.config/i3/backlight_system.sh 125 1100"
-    bindsym 5 exec "~/.config/i3/backlight_system.sh 150 1300"
-    bindsym 6 exec "~/.config/i3/backlight_system.sh 175 1500"
-    bindsym 7 exec "~/.config/i3/backlight_system.sh 200 1700"
-    bindsym 8 exec "~/.config/i3/backlight_system.sh 225 1900"
-    bindsym 9 exec "~/.config/i3/backlight_system.sh 255 2100"
-    bindsym 0 exec "~/.config/i3/backlight_system.sh 0 0"
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+m mode "$backlight_system"
-
-set $hue_light Phillips-Hue Light (1) 10%, (2) 20%, (3) 30%, (4) 40%, (5) 50%, (6) 60%, (7) 70%, (8) 80%, (9) 100%, (0) 0%
-mode "$hue_light" {
-    bindsym 1 exec "~/.config/i3/hui_light.sh true 50"
-    bindsym 2 exec "~/.config/i3/hui_light.sh true 75"
-    bindsym 3 exec "~/.config/i3/hui_light.sh true 100"
-    bindsym 4 exec "~/.config/i3/hui_light.sh true 125"
-    bindsym 5 exec "~/.config/i3/hui_light.sh true 150"
-    bindsym 6 exec "~/.config/i3/hui_light.sh true 175"
-    bindsym 7 exec "~/.config/i3/hui_light.sh true 200"
-    bindsym 8 exec "~/.config/i3/hui_light.sh true 225"
-    bindsym 9 exec "~/.config/i3/hui_light.sh true 255"
-    bindsym 0 exec "~/.config/i3/hui_light.sh false 0"
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+u mode "$hue_light"
-
-set $hue_light_color Phillips-Hue Color (r) Red, (g) Green, (b) Blue
-mode "$hue_light_color" {
-    bindsym r exec "~/.config/i3/hui_light_color.sh 0"
-    bindsym g exec "~/.config/i3/hui_light_color.sh 25500"
-    bindsym b exec "~/.config/i3/hui_light_color.sh 46920"
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym $mod+shift+u mode "$hue_light_color"
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
