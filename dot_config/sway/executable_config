@@ -235,31 +235,37 @@ bindsym $mod+r mode "resize"
 # Status-Bar
 #exec_always --no-startup-id $HOME/.config/polybar/launch.sh --cuts
 
+# bar {
+#     swaybar_command /usr/bin/swaybar
+#     #font pango:Terminus (TTF) Bold 12
+#     #font pango:Hack Nerd Font 13
+#     font pango:Hack Bold 14
+#     #font pango:DejaVu Sans Mono, FontAwesome 12
+#     #font pango:MesloLGM Nerd Font Bold 13
+
+#     position top
+#     status_command i3status-rs ~/.config/i3status-rust/config.toml
+
+#     # https://fontawesome.com/v4/cheatsheet/
+#     separator_symbol 
+
+#     colors {
+#         background $bg-color
+#         statusline #263238
+#         separator #757575
+
+#         #colors outline background number
+#         active_workspace #009688 #009688 #eceff1
+#         focused_workspace $bg-color $bg-color $text-color
+#         inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
+#         urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
+#    }
+# }
+
+
+# Read `man 5 sway-bar` for more information about this section.
 bar {
-    swaybar_command /usr/bin/swaybar
-    #font pango:Terminus (TTF) Bold 12
-    #font pango:Hack Nerd Font 13
-    #font pango:Hack 12
-    #font pango:DejaVu Sans Mono, FontAwesome 12
-    font pango:MesloLGM Nerd Font Bold 13
-
-    position top
-    status_command i3status-rs ~/.config/i3status-rust/config.toml
-
-    # https://fontawesome.com/v4/cheatsheet/
-    separator_symbol 
-
-    colors {
-        background $bg-color
-        statusline #263238
-        separator #757575
-
-        #colors outline background number
-        active_workspace #009688 #009688 #eceff1
-        focused_workspace $bg-color $bg-color $text-color
-        inactive_workspace $inactive-bg-color $inactive-bg-color $inactive-text-color
-        urgent_workspace $urgent-bg-color $urgent-bg-color $text-color
-   }
+    swaybar_command waybar
 }
 
 input * {
