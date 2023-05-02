@@ -68,6 +68,7 @@ bindsym $mod+Shift+q kill
 # Menu
 #bindsym $mod+d exec rofi -show run -lines 3 -bw 1 -font "Cantarell 18" -opacity "75" 
 bindsym $mod+d exec fuzzel
+bindsym $mod+Shift+d exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
 #bindsym $mod+d exec wofi --show run --width 900 --height 200
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
@@ -288,7 +289,7 @@ output eDP-1 pos 0 0 res 1920x1080
 exec_always {
     gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
     gsettings set org.gnome.desktop.interface gtk-theme Arc-Dark
-    gsettings set org.gnome.desktop.interface icon-theme Arc
+    gsettings set org.gnome.desktop.interface icon-theme Papirus-Dark
     gsettings set org.gnome.desktop.wm.preferences theme "Arc-Dark"
 }
 
@@ -537,6 +538,9 @@ exec --no-startup-id /usr/bin/lxqt-policykit-agent
 
 # starting Steam
 #exec --no-startup-id sleep 30 && steam-native
+
+# Clipboard Manager
+exec wl-paste -t text --watch clipman store
 
 exec swayidle -w \
          timeout 300 'swaylock -f' \

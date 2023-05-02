@@ -1,7 +1,7 @@
 
 # Created by lxqt-config-appearance (DO NOT EDIT!)
 gtk-theme-name = "Arc-Dark"
-gtk-icon-theme-name = "Arc"
+gtk-icon-theme-name = "Papirus-Dark"
 gtk-font-name = "Cantarell 12"
 gtk-button-images = 1
 gtk-menu-images = 1
