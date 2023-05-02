@@ -314,11 +314,11 @@ set $mode_launcher Launch: [f]irefox [t]hunderbird [p]avucontrol [w]displays fil
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym f exec firefox
-    bindsym t exec thunderbird
-    bindsym p exec pavucontrol-qt
-    bindsym w exec wdisplays
-    bindsym m exec pcmanfm-qt
+    bindsym f exec firefox, mode "default"
+    bindsym t exec thunderbird, mode "default"
+    bindsym p exec pavucontrol-qt, mode "default"
+    bindsym w exec wdisplays, mode "default"
+    bindsym m exec pcmanfm-qt, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -452,7 +452,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # 1. Capture a Selection
 bindsym Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
 # 2. Capture the actually Display
-bindsym $mod+Shift+Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+bindsym Shift+Print exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
 
 bindsym $mod+p exec wlogout -p layer-shell
 
@@ -519,8 +519,8 @@ exec --no-startup-id "mako -c .config/mako/config"
 # imwheel faster scrolling (deactivated sound bug)
 #exec --no-startup-id imwheel
 
-# authentication manager
-exec --no-startup-id lxpolkit
+# authentication manager (https://wiki.archlinux.org/title/Polkit)
+exec --no-startup-id /usr/bin/lxqt-policykit-agent
 
 # xfce4-power-manager
 #exec --no-startup-id xfce4-power-manager
