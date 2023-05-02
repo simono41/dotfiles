@@ -455,6 +455,7 @@ bindsym Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d
 bindsym Shift+Print exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
 
 bindsym $mod+p exec wlogout -p layer-shell
+bindsym --no-repeat $mod+Shift+p exec "echo 2 > /tmp/wcp"
 
 # Power control script - a useful replacement for the normal i3 exiting keybind.
 # https://wiki.archlinux.org/index.php/i3#Shutdown.2C_reboot.2C_lock_screen
@@ -543,7 +544,8 @@ exec swayidle -w \
          before-sleep 'swaylock -f'
 
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
-exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov
+exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -t 200
+exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 20 -a rt
 
 #######
 
