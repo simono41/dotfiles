@@ -32,7 +32,7 @@ set $urgent-bg-color     #E53935
 #font pango:Terminus (TTF) Bold 12
 #font pango:Hack Nerd Font 13
 #font pango:Hack 12
-font pango:monospaced 12
+font pango:monospace 12
 
 # window colors
 #                       border              background         text                 indicat>

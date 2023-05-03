@@ -5,7 +5,7 @@ lock() {
 
 case "$1" in
     lock)
-        i3lock -c 000000
+        i3lock -i ~/desktop-bilder/bluescreen_full-hd.png -t
         ;;
     logout)
         i3-msg exit

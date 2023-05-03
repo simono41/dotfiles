@@ -48,7 +48,7 @@ critical_mem = 90
 block = "sound"
 [[block.click]]
 button = "left"
-cmd = "pavucontrol-qt"
+cmd = "pavucontrol"
 
 [[block]]
 block = "time"
@@ -57,16 +57,10 @@ interval = 5
 format = " $timestamp.datetime(f:'%a %Y-%m-%d %H:%M:%S') "
 
 [[block]]
-block = "hueshift"
-hue_shifter = "wl_gammarelay_rs"
-step = 50
-click_temp = 3500
-
-[[block]]
 block = "backlight"
 format = " $brightness "
 
 [[block]]
 block = "battery"
-format = " $icon $percentage {$time |}"
+format = " $icon  $percentage {$time |}"
 missing_format = ""
