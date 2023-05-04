@@ -69,6 +69,8 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec rofi -show run -lines 3 -bw 1 -font "Cantarell 18" -opacity "75" 
 bindsym $mod+d exec fuzzel
 bindsym $mod+Shift+d exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
+bindsym $mod+y exec ~/.config/fuzzel/fuzzel-pass.sh
+#bindsym $mod+shift+y exec passdmenu -P -x clipboard
 #bindsym $mod+d exec wofi --show run --width 900 --height 200
 #bindsym $mod+d exec rofi -show run -lines 3 -eh 2 -width 100 -padding 800 -opacity "85" -bw 0 -bc "$bg-color" -bg "$bg-color" -fg "$text-color" -hlbg "$bg-color" -hlfg "#9575cd" -font "System San Francisco Display 18"
 
@@ -335,9 +337,6 @@ bindsym $mod+b exec firefox
 bindsym $mod+t exec pcmanfm-qt
 bindsym $mod+shift+t exec thunderbird
 bindsym $mod+n exec wezterm start nmtui
-
-#bindsym $mod+y exec clipmenu
-#bindsym $mod+shift+y exec passdmenu -P -x clipboard
 
 #bindsym $mod+o exec termite -e /usr/bin/alsamixer
 #bindsym $mod+y exec alacritty -e ncmpcpp
