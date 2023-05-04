@@ -365,6 +365,7 @@ for_window [app_id="blueman-manager"] resize set 1000 600
 for_window [app_id="pavucontrol"] floating enable
 for_window [app_id="pavucontrol"] resize set 1000 600
 for_window [app_id="org.gnome.Nautilus"] floating enable
+for_window [app_id="pcmanfm-qt"] floating enable
 for_window [app_id="gnome-system-monitor"] floating enable; resize shrink down 100px; resize shrink up 100px
 for_window [app_id="wdisplays"] floating enable
 for_window [app_id="wdisplays"] resize set 1000 600

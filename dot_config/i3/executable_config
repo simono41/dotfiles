@@ -325,6 +325,7 @@ for_window [title="galculator"] floating enable border normal
 for_window [title="Verbindungsinformationen"] floating enable border normal
 for_window [title="Lautstärkeregler"] floating enable border normal
 for_window [title="Freundesliste"] floating enable border normal
+for_window [app_id="pcmanfm"] floating enable
 
 # Einstellungen Fensterverhalten für bestimmte Programme im Terminal
 for_window [class="Alpine"] floating enable border none
