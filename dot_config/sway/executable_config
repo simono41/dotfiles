@@ -355,17 +355,22 @@ bindsym $mod+shift+v exec "if pamixer --get-mute; then pamixer --unmute; else pa
 # xprop
 
 # Einstellungen für spezielle Programme (exact match instead of substring)
+# Remmina (swaymsg -t get_tree)
+for_window [app_id="org.remmina.Remmina"] floating enable
+for_window [app_id="org.remmina.Remmina"] resize set 1000 600
+
 for_window [app_id="foot"] border pixel 1
 for_window [app_id="iwgtk"] floating enable
 for_window [app_id="blueman-manager"] floating enable
 for_window [app_id="blueman-manager"] resize set 1000 600
 for_window [app_id="pavucontrol"] floating enable
+for_window [app_id="pavucontrol"] resize set 1000 600
 for_window [app_id="org.gnome.Nautilus"] floating enable
 for_window [app_id="gnome-system-monitor"] floating enable; resize shrink down 100px; resize shrink up 100px
 for_window [app_id="wdisplays"] floating enable
 for_window [app_id="wdisplays"] resize set 1000 600
-for_window [app_id="pavucontrol"] floating enable
-for_window [app_id="pavucontrol"] resize set 1000 600
+for_window [app_id="pavucontrol-qt"] floating enable
+for_window [app_id="pavucontrol-qt"] resize set 1000 600
 for_window [app_id="imv"] floating enable
 for_window [app_id="pamac-manager"] floating enable
 
@@ -437,9 +442,6 @@ for_window [class="^PacketTracer6$"] floating enable
 for_window [class="^PacketTracer6$" title="PT Activity"] floating disable
 for_window [class="^PacketTracer6$" title="Cisco Packet Tracer"] floating disable
 
-# Remmina (swaymsg -t get_tree)
-for_window [app_id="org.remmina.Remmina"] floating enable
-
 # Alsa-Steuerung & Lautstärke einstellen
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pamixer --get-volume > /tmp/wob
@@ -509,7 +511,7 @@ bindsym $mod+Shift+z move container to workspace back_and_forth; workspace back_
 #exec --no-startup-id volumeicon
 
 # Networkmanager
-#exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 
 # Bluetooth
 exec --no-startup-id blueman-applet
