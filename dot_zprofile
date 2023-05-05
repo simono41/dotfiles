@@ -44,6 +44,9 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export PATH="$PATH:~/go/bin/"
     export PATH="$PATH:~/.local/share/flatpak/exports/bin/"
 
+    export TERMINAL=wezterm
+    export EDITOR=vim
+
     #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/
 
     exec sway
