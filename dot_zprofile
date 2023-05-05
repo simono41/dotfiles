@@ -30,8 +30,12 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     export XDG_SESSION_TYPE=wayland
     export XDG_CURRENT_DESKTOP=sway
     export WLR_NO_HARDWARE_CURSORS=1
+    export CLUTTER_BACKEND=wayland
+    export SDL_VIDEODRIVER=wayland
 
     export _JAVA_AWT_WM_NONREPARENTING=1 #Make java programs work somewhat
+    export ECORE_EVAS_ENGINE=wayland_egl
+    export ELM_ENGINE=wayland_egl
 
     export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
     export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
