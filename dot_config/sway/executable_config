@@ -2,6 +2,7 @@ set $mod Mod1
 
 # https://man.archlinux.org/man/sway.5.en
 # https://wiki.archlinux.org/title/Sway
+# https://i3wm.org/docs/userguide.html
 # https://github.com/swaywm/sway/wiki
 # https://github.com/swayos/swayos.github.io/blob/main/home/.config/sway/config
 
@@ -246,6 +247,8 @@ for_window [app_id="pcmanfm"] floating enable
 for_window [app_id="pcmanfm"] resize set 1000 600
 for_window [app_id="pcmanfm-qt"] floating enable
 for_window [app_id="pcmanfm-qt"] resize set 1000 600
+for_window [app_id="lxqt-archiver"] floating enable
+for_window [app_id="lxqt-archiver"] resize set 1000 600
 for_window [app_id="imv"] floating enable
 for_window [app_id="pamac-manager"] floating enable
 for_window [app_id="org.remmina.Remmina"] floating enable
