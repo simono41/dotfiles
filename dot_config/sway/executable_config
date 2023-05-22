@@ -255,6 +255,10 @@ for_window [app_id="imv"] floating enable
 for_window [app_id="pamac-manager"] floating enable
 for_window [app_id="org.remmina.Remmina"] floating enable
 for_window [app_id="org.remmina.Remmina"] resize set 1000 600
+for_window [app_id="nm-applet"] floating enable
+for_window [app_id="nm-applet"] resize set 1000 600
+for_window [app_id="nm-connection-editor"] floating enable
+for_window [app_id="nm-connection-editor"] resize set 1000 600
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > /tmp/wob
 bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > /tmp/wob
