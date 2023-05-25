@@ -104,6 +104,9 @@ set autowrite		" Automatically save before commands like :next and :make
 set mouse=a		" Enable mouse usage (all modes)
 set autoindent          " Enable automatic einrueckungen
 
+" more powerful backspacing
+set backspace=indent,eol,start
+
 " show the editing mode on the last line
 set showmode
 
