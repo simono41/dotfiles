@@ -175,6 +175,10 @@ input * {
       xkb_options grp:alt_space_toggle
 }
 
+bar {
+    swaybar_command waybar
+}
+
 seat seat0 xcursor_theme capitaine-cursors 16
 
 # display resoulution
@@ -340,9 +344,6 @@ exec "mako -c .config/mako/config"
 
 # authentication manager https://wiki.archlinux.org/title/Polkit
 exec /usr/bin/lxqt-policykit-agent
-
-# Waybar
-exec waybar
 
 # Clipboard Manager
 exec wl-paste -t text --watch clipman store
