@@ -87,6 +87,9 @@ button:hover {
 #mode,
 #idle_inhibitor,
 #scratchpad,
+#custom-wl-gammarelay-temperature,
+#custom-wl-gammarelay-brightness,
+#custom-wl-gammarelay-gamma,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
@@ -155,6 +158,9 @@ label:focus {
     background-color: #964B00;
 }
 
+#custom-wl-gammarelay-temperature,
+#custom-wl-gammarelay-brightness,
+#custom-wl-gammarelay-gamma,
 #backlight {
     background-color: #90b1b1;
 }
