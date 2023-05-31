@@ -63,10 +63,11 @@ format = " $brightness "
 [[block]]
 block = "custom"
 command = "if pgrep svkbd-mobile-in >/dev/null; then echo \"󰌌\"; else echo \"󰌐\"; fi"
-interval = 1
+interval = "once"
 [[block.click]]
 button = "left"
 cmd = "if pgrep svkbd-mobile-in >/dev/null; then pkill svkbd-mobile-in; else svkbd-mobile-intl -d; fi"
+update = true
 
 [[block]]
 block = "battery"
