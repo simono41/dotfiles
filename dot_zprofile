@@ -7,7 +7,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     done
 
     # Falls autostartdesktop auf i3 gesetzt wird, wird i3 statt sway gestartet
-    if [ "${autostartdesktop}" == "i3" ]; then
+    if [ "${autostartdesktop}" = "i3" ]; then
         echo "exec i3" > ~/.xinitrc
         startx
     else
