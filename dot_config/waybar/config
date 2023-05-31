@@ -22,15 +22,16 @@
         "temperature",
         "backlight",
         "custom/wl-gammarelay-temperature",
-        "custom/wl-gammarelay-brightness",
-        "custom/wl-gammarelay-gamma",
-        "keyboard-state",
-        "sway/language",
+        //"custom/wl-gammarelay-brightness",
+        //"custom/wl-gammarelay-gamma",
+        //"keyboard-state",
+        //"sway/language",
+        "custom/events",
+        "clock",
         "battery",
         "battery#bat2",
-        "clock",
-        "custom/events",
-        "tray"
+        "tray",
+        "custom/wvkbd"
     ],
     // Modules configuration
     "sway/workspaces": {
@@ -247,5 +248,12 @@
         },
         "exec": "~/.config/waybar/waybar-khal.py",
         "return-type": "json"
+    },
+    "custom/wvkbd": {
+        "format": "{icon}",
+        "format-icons": {
+            "default": ""
+        },
+        "on-click": "pkill --signal SIGRTMIN wvkbd-mobintl"
     }
 }

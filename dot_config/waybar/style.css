@@ -91,6 +91,7 @@ button:hover {
 #custom-wl-gammarelay-brightness,
 #custom-wl-gammarelay-gamma,
 #custom-events,
+#custom-wvkbd,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
@@ -164,6 +165,10 @@ label:focus {
 #custom-wl-gammarelay-gamma,
 #backlight {
     background-color: #90b1b1;
+}
+
+#custom-wvkbd {
+    background-color: #2980b9;
 }
 
 #network {
