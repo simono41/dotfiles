@@ -512,6 +512,9 @@ exec --no-startup-id "dunst"
 # authentication manager
 exec --no-startup-id lxpolkit
 
+# SVKBD: Simple Virtual Keyboard
+#exec --no-startup-id svkbd-mobile-intl -d
+
 # xfce4-power-manager
 #exec --no-startup-id xfce4-power-manager
 

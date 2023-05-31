@@ -61,6 +61,17 @@ block = "backlight"
 format = " $brightness "
 
 [[block]]
+block = "custom"
+command = "if pgrep svkbd-mobile-in >/dev/null; then echo \"󰌌\"; else echo \"󰌐\"; fi"
+interval = 1
+[[block.click]]
+button = "left"
+cmd = "svkbd-mobile-intl -d"
+[[block.click]]
+button = "right"
+cmd = "pkill svkbd-mobile-in"
+
+[[block]]
 block = "battery"
 format = " $icon  $percentage {$time |}"
 missing_format = ""
