@@ -1,55 +1,68 @@
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-    # First make sure dbus is started
-    if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
-        export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
-    fi
-    echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+    # Lade die Bootparameter in den Variablen
+    for wort in $(cat /proc/cmdline)
+    do
+        echo "Parameter ${wort%=*} = ${wort#*=}"
+        if ! export ${wort%=*}=${wort#*=}; then echo "cannot export ${wort}!!!"; fi
+    done
 
-    # Set XDG_RUNTIME_DIR
-    # Paragraph modified from https://wiki.gentoo.org/wiki/Sway
-    if test -z "${XDG_RUNTIME_DIR}"; then
-    UID="$(id -u)"
-    export XDG_RUNTIME_DIR=/tmp/"${UID}"-runtime-dir
-        if ! test -d "${XDG_RUNTIME_DIR}"; then
-            mkdir "${XDG_RUNTIME_DIR}"
-            chmod 0700 "${XDG_RUNTIME_DIR}"
+    # Falls autostartdesktop auf i3 gesetzt wird, wird i3 statt sway gestartet
+    if [ "${autostartdesktop}" == "i3" ]; then
+        echo "exec i3" > ~/.xinitrc
+        startx
+    else
+        # First make sure dbus is started
+        if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+            export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
         fi
+        echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+
+        # Set XDG_RUNTIME_DIR
+        # Paragraph modified from https://wiki.gentoo.org/wiki/Sway
+        if test -z "${XDG_RUNTIME_DIR}"; then
+            UID="$(id -u)"
+            export XDG_RUNTIME_DIR=/tmp/"${UID}"-runtime-dir
+            if ! test -d "${XDG_RUNTIME_DIR}"; then
+                mkdir "${XDG_RUNTIME_DIR}"
+                chmod 0700 "${XDG_RUNTIME_DIR}"
+            fi
+        fi
+
+        # Enable SSH agent
+        eval $(keychain --noask --eval --quiet)
+
+        # Various exports
+
+        export SHELL="$(command -v zsh)"
+
+        export QT_QPA_PLATFORMTHEME=qt5ct
+        export QT_QPA_PLATFORM=wayland
+        export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
+        export GDK_BACKEND=wayland
+        export XDG_SESSION_TYPE=wayland
+        export XDG_CURRENT_DESKTOP=sway
+        export WLR_NO_HARDWARE_CURSORS=1
+        export CLUTTER_BACKEND=wayland
+        export SDL_VIDEODRIVER=wayland
+
+        export _JAVA_AWT_WM_NONREPARENTING=1 #Make java programs work somewhat
+        export ECORE_EVAS_ENGINE=wayland_egl
+        export ELM_ENGINE=wayland_egl
+
+        export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
+        export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
+
+        export PATH="$PATH:~/.local/bin/"
+        export PATH="$PATH:~/go/bin/"
+        export PATH="$PATH:~/.local/share/flatpak/exports/bin/"
+
+        export TERMINAL=wezterm
+        export EDITOR=vim
+
+        #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/
+
+        #XDG_CURRENT_DESKTOP=sway dbus-run-session sway
+        exec sway
     fi
-
-    # Enable SSH agent
-    eval $(keychain --noask --eval --quiet)
-
-    # Various exports
-
-    export SHELL="$(command -v zsh)"
-
-    export QT_QPA_PLATFORMTHEME=qt5ct
-    export QT_QPA_PLATFORM=wayland
-    export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
-    export GDK_BACKEND=wayland
-    export XDG_SESSION_TYPE=wayland
-    export XDG_CURRENT_DESKTOP=sway
-    export WLR_NO_HARDWARE_CURSORS=1
-    export CLUTTER_BACKEND=wayland
-    export SDL_VIDEODRIVER=wayland
-
-    export _JAVA_AWT_WM_NONREPARENTING=1 #Make java programs work somewhat
-    export ECORE_EVAS_ENGINE=wayland_egl
-    export ELM_ENGINE=wayland_egl
-
-    export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
-    export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
-
-    export PATH="$PATH:~/.local/bin/"
-    export PATH="$PATH:~/go/bin/"
-    export PATH="$PATH:~/.local/share/flatpak/exports/bin/"
-
-    export TERMINAL=wezterm
-    export EDITOR=vim
-
-    #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/
-
-    #XDG_CURRENT_DESKTOP=sway dbus-run-session sway
-    exec sway
 fi
 
