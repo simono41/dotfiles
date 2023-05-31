@@ -90,6 +90,7 @@ button:hover {
 #custom-wl-gammarelay-temperature,
 #custom-wl-gammarelay-brightness,
 #custom-wl-gammarelay-gamma,
+#custom-events,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
@@ -173,6 +174,7 @@ label:focus {
     background-color: #f53c3c;
 }
 
+#custom-events,
 #pulseaudio {
     background-color: #f1c40f;
     color: #000000;
