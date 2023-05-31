@@ -66,10 +66,7 @@ command = "if pgrep svkbd-mobile-in >/dev/null; then echo \"󰌌\"; else echo \"
 interval = 1
 [[block.click]]
 button = "left"
-cmd = "svkbd-mobile-intl -d"
-[[block.click]]
-button = "right"
-cmd = "pkill svkbd-mobile-in"
+cmd = "if pgrep svkbd-mobile-in >/dev/null; then pkill svkbd-mobile-in; else svkbd-mobile-intl -d; fi"
 
 [[block]]
 block = "battery"
