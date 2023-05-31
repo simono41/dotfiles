@@ -279,13 +279,13 @@ bindsym $mod+minus scratchpad show
 
 # Starte Programme über Tastaurkombination
 
-# Press $mod+o followed by either f to launch firefox,
+# Press $mod+o followed by either c to launch chromium,
 # Escape or Return to the default mode, respectively.
-set $mode_launcher Launch: [f]irefox [t]hunderbird [p]avucontrol [a]randr file[m]anager
+set $mode_launcher Launch: [c]hromium [t]hunderbird [p]avucontrol [a]randr file[m]anager
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym f exec firefox
+    bindsym f exec chromium
     bindsym t exec thunderbird
     bindsym p exec pavucontrol
     bindsym a exec arandr
@@ -295,7 +295,7 @@ mode "$mode_launcher" {
     bindsym Return mode "default"
 }
 
-bindsym $mod+b exec firefox
+bindsym $mod+b exec chromium
 bindsym $mod+t exec pcmanfm
 bindsym $mod+shift+t exec thunderbird
 bindsym $mod+n exec wezterm start nmtui

@@ -40,7 +40,7 @@
         "format": "{name}: {icon} ",
         "format-icons": {
             "1": "",
-            "2": "",
+            "2": "",
             "3": "",
             "urgent": "",
             "focused": "",
