@@ -16,7 +16,7 @@ icons = "awesome4"
 
 [[block]]
 block = "net"
-format = " $icon  {$signal_strength $ip $ssid$frequency ^icon_net_down$speed_down.eng(prefix:K) ^icon_net_up$speed_up.eng(prefix:K)|Wired connection} via $device "
+format = " $icon  {$signal_strength $ip $ssid$frequency} via $device "
 [[block.click]]
 button = "left"
 cmd = "wezterm start nmtui"
