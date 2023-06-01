@@ -226,7 +226,7 @@ set $mode_launcher Launch: [c]hromium [t]hunderbird [p]avucontrol [w]displays fi
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym c exec chromium --ozone-platform-hint=auto, mode "default"
+    bindsym c exec chromium, mode "default"
     bindsym t exec thunderbird, mode "default"
     bindsym p exec pavucontrol-qt, mode "default"
     bindsym w exec wdisplays, mode "default"
@@ -236,7 +236,7 @@ mode "$mode_launcher" {
     bindsym Return mode "default"
 }
 
-bindsym $mod+b exec chromium --ozone-platform-hint=auto
+bindsym $mod+b exec chromium
 bindsym $mod+t exec pcmanfm-qt
 bindsym $mod+shift+t exec thunderbird
 bindsym $mod+n exec wezterm start nmtui
