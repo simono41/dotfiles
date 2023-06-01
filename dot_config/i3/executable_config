@@ -326,6 +326,10 @@ for_window [title="Verbindungsinformationen"] floating enable border normal
 for_window [title="Lautstärkeregler"] floating enable border normal
 for_window [title="Freundesliste"] floating enable border normal
 for_window [title="pcmanfm"] floating enable
+for_window [title="Screen Layout Editor"] floating enable
+for_window [title="Screen Layout Editor"] resize set 640 480
+for_window [title="Layout speichern"] floating enable
+for_window [title="Layout speichern"] resize set 640 480
 
 # Einstellungen Fensterverhalten für bestimmte Programme im Terminal
 for_window [class="Alpine"] floating enable border none
@@ -365,23 +369,24 @@ for_window [class="^Unity$" title="^Preparing Package$"] floating enable
 for_window [class="^Unity$" title="^Importing Package$"] floating enable
 
 # https://github.com/ValveSoftware/steam-for-linux/issues/1040
-for_window [class="^Steam$" title="*"] floating enable
-for_window [class="^Steam$" title="*"] resize set 480 640
+#for_window [class="^Steam$" title="*"] floating enable
+#for_window [class="^Steam$" title="*"] resize set 480 640
 # Main Window
-for_window [class="^Steam$" title="^Steam$"] floating disable
-#for_window [class="^Steam$" title="^Friends$"] floating enable
-#for_window [class="^Steam$" title="Steam - News"] floating enable
-#for_window [class="^Steam$" title=".* - Chat"] floating enable
-#for_window [class="^Steam$" title="^Settings$"] floating enable
-#for_window [class="^Steam$" title=".* - event started"] floating enable
-#for_window [class="^Steam$" title=".* CD key"] floating enable
-#for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
-#for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
-#for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
-#for_window [class="^Steam$" title="Steam-Bibliotheksordner$"] floating enable
-#for_window [class="^Steam$" title="Neuen Steam-Bibliotheksordner auswählen oder erstellen:$"] floating enable
-#for_window [class="^Steam$" title="Freundesliste"] floating enable
-#for_window [title="^Steam Keyboard$"] floating enable
+#for_window [class="^Steam$" title="^Steam$"] floating disable
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [class="^Steam$" title="Steam-Bibliotheksordner$"] floating enable
+for_window [class="^Steam$" title="Neuen Steam-Bibliotheksordner auswählen oder erstellen:$"] floating enable
+for_window [class="^Steam$" title="Freundesliste"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+for_window [title="Bildschirmtastatur der Steam-Eingabe"] floating enable
 
 # There is no specific property for windows that should be floating (eg. the WM_NAME is the device name (PC1))
 for_window [class="^PacketTracer6$"] floating enable
