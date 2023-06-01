@@ -14,12 +14,12 @@ icons = "awesome4"
 #bat_charging = " |^| "
 #bat_discharging = " |v| "
 
-[[block]]
-block = "net"
-format = " $icon  {$signal_strength $ip $ssid$frequency} via $device "
-[[block.click]]
-button = "left"
-cmd = "wezterm start nmtui"
+#[[block]]
+#block = "net"
+#format = " $icon  {$signal_strength $ip $ssid$frequency} via $device "
+#[[block.click]]
+#button = "left"
+#cmd = "wezterm start nmtui"
 
 [[block]]
 block = "cpu"
