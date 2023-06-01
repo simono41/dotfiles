@@ -1,5 +1,3 @@
-### BITTE DIESE DATEI NUR MIT FOLGENDEM BEFEHL BEARBEITEN ###
-# chezmoi edit .config/i3/config
 #
 #====================== OLD COLOR SCHME
 set $foreground   #eceff1
@@ -531,9 +529,7 @@ exec --no-startup-id lxpolkit
 #exec --no-startup-id /opt/an2linuxserver/an2linuxserver.py
 
 # starting Steam
-{{- if eq .chezmoi.hostname "SpectreOS-deck" }}
-exec --no-startup-id steam
-{{- end }}
+#exec --no-startup-id sleep 30 && steam-native
 
 #######
 
