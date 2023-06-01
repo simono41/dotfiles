@@ -182,7 +182,15 @@ bar {
 seat seat0 xcursor_theme capitaine-cursors 16
 
 # display resoulution
+
+# machine-specific configuration
+{{- if eq .chezmoi.hostname "SpectreOS" }}
 output eDP-1 pos 0 0 res 1920x1080
+{{- end }}
+
+{{- if eq .chezmoi.hostname "SpectreOS-deck" }}
+output eDP-1 mode 800x1200 transform 90
+{{- end }}
 
 set $gnome-schema org.gnome.desktop.interface
 exec_always {
