@@ -475,6 +475,9 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 exec_always --no-startup-id feh --bg-scale ~/desktop-bilder/background.jpg
 #exec_always --no-startup-id feh --bg-scale /opt/deadc0de-os-code/background.jpg
 
+# start dbus for xdg-desktop-portal-gtk.service user service
+exec --no-startup-id "dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY"
+
 # conky ;-)
 #exec --no-startup-id /opt/.Conky/startconky.sh now
 
