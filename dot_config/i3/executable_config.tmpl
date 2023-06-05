@@ -89,9 +89,9 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -font "snap 12" -bg "#222222" -fg "#888888" -hlbg "#285577" -hlfg "#ffffff" -opacity 90 -m 0 -location 2'
+
+bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="~/.config/sway/bemenu-run.sh -l 30" --term="wezterm" --no-generic
 bindsym $mod+y exec clipmenu
 bindsym $mod+shift+y exec passdmenu -P -x clipboard
 
