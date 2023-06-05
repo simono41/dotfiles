@@ -37,5 +37,5 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/"
 
 
 # Added by Toolbox App
-export PATH="$PATH:/home/simono41/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
 

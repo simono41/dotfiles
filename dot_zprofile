@@ -8,6 +8,8 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
 
     # Falls autostartdesktop auf i3 gesetzt wird, wird i3 statt sway gestartet
     if [ "${autostartdesktop}" = "i3" ]; then
+        export QT_QPA_PLATFORMTHEME=qt5ct
+
         echo "exec i3" > ~/.xinitrc
         startx
     else
@@ -69,5 +71,5 @@ fi
 
 
 # Added by Toolbox App
-export PATH="$PATH:/home/simono41/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
 
