@@ -6,10 +6,19 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
         if ! export ${wort%=*}=${wort#*=}; then echo "cannot export ${wort}!!!"; fi
     done
 
+    export QT_QPA_PLATFORMTHEME=qt5ct
+
+    export PATH="$PATH:/home/${USER}/.local/bin/"
+    export PATH="$PATH:/home/${USER}/go/bin/"
+    export PATH="$PATH:/home/${USER}/.local/share/flatpak/exports/bin/"
+
+    export XDG_DATA_DIRS="/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:/home/${USER}/.local/share/flatpak/exports/share/"
+
+    # Added by Toolbox App
+    export PATH="$PATH:/home/${USER}/.local/share/JetBrains/Toolbox/scripts"
+
     # Falls autostartdesktop auf i3 gesetzt wird, wird i3 statt sway gestartet
     if [ "${autostartdesktop}" = "i3" ]; then
-        export QT_QPA_PLATFORMTHEME=qt5ct
-
         echo "exec i3" > ~/.xinitrc
         startx
     else
@@ -54,10 +63,6 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
         export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
         export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
 
-        export PATH="$PATH:~/.local/bin/"
-        export PATH="$PATH:~/go/bin/"
-        export PATH="$PATH:~/.local/share/flatpak/exports/bin/"
-
         export TERMINAL=wezterm
         export EDITOR=vim
 
@@ -67,9 +72,3 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
         exec sway
     fi
 fi
-
-
-
-# Added by Toolbox App
-export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
-

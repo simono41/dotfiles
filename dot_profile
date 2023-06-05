@@ -1,7 +1,7 @@
 # First make sure dbus is started
 
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
-            export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
+    export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
 fi
 echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
 
@@ -27,15 +27,15 @@ export _JAVA_AWT_WM_NONREPARENTING=1 #Make java programs work somewhat
 export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
 export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
 
-export PATH="$PATH:~/.local/bin/"
-export PATH="$PATH:~/go/bin/"
-export PATH="$PATH:~/.local/share/flatpak/exports/bin/"
+export QT_QPA_PLATFORMTHEME=qt5ct
 
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/"
+export PATH="$PATH:/home/${USER}/.local/bin/"
+export PATH="$PATH:/home/${USER}/go/bin/"
+export PATH="$PATH:/home/${USER}/.local/share/flatpak/exports/bin/"
 
-#sway
-
+export XDG_DATA_DIRS="/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:/home/${USER}/.local/share/flatpak/exports/share/"
 
 # Added by Toolbox App
-export PATH="$PATH:~/.local/share/JetBrains/Toolbox/scripts"
+export PATH="$PATH:/home/${USER}/.local/share/JetBrains/Toolbox/scripts"
 
+#sway
