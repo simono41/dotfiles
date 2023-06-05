@@ -38,8 +38,9 @@ bindsym $mod+Shift+q kill
 
 # Menu
 bindsym $mod+d exec fuzzel
-bindsym $mod+Shift+d exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
-bindsym $mod+y exec ~/.config/fuzzel/fuzzel-pass.sh
+bindsym $mod+Shift+d exec j4-dmenu-desktop --dmenu="~/.config/sway/bemenu-run.sh -l 30" --term="wezterm" --no-generic
+bindsym $mod+y exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
+bindsym $mod+Shift+y exec ~/.config/fuzzel/fuzzel-pass.sh
 
 # change focus
 bindsym $mod+j focus left
