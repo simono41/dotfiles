@@ -55,6 +55,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
         export WLR_NO_HARDWARE_CURSORS=1
         export CLUTTER_BACKEND=wayland
         export SDL_VIDEODRIVER=wayland
+        export BEMENU_BACKEND=wayland
 
         export _JAVA_AWT_WM_NONREPARENTING=1 #Make java programs work somewhat
         export ECORE_EVAS_ENGINE=wayland_egl
