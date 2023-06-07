@@ -17,35 +17,34 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     # Added by Toolbox App
     export PATH="$PATH:/home/${USER}/.local/share/JetBrains/Toolbox/scripts"
 
+    # First make sure dbus is started
+    if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
+        export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
+    fi
+    echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
+
+    # Set XDG_RUNTIME_DIR
+    # Paragraph modified from https://wiki.gentoo.org/wiki/Sway
+    if test -z "${XDG_RUNTIME_DIR}"; then
+        UID="$(id -u)"
+        export XDG_RUNTIME_DIR=/tmp/"${UID}"-runtime-dir
+        if ! test -d "${XDG_RUNTIME_DIR}"; then
+            mkdir "${XDG_RUNTIME_DIR}"
+            chmod 0700 "${XDG_RUNTIME_DIR}"
+        fi
+    fi
+
+    # Enable SSH agent
+    eval $(keychain --noask --eval --quiet)
+
+    # Various exports
+    export SHELL="$(command -v zsh)"
+
     # Falls autostartdesktop auf i3 gesetzt wird, wird i3 statt sway gestartet
     if [ "${autostartdesktop}" = "i3" ]; then
         echo "exec i3" > ~/.xinitrc
         startx
     else
-        # First make sure dbus is started
-        if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
-            export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
-        fi
-        echo "D-Bus per-session daemon address is: $DBUS_SESSION_BUS_ADDRESS"
-
-        # Set XDG_RUNTIME_DIR
-        # Paragraph modified from https://wiki.gentoo.org/wiki/Sway
-        if test -z "${XDG_RUNTIME_DIR}"; then
-            UID="$(id -u)"
-            export XDG_RUNTIME_DIR=/tmp/"${UID}"-runtime-dir
-            if ! test -d "${XDG_RUNTIME_DIR}"; then
-                mkdir "${XDG_RUNTIME_DIR}"
-                chmod 0700 "${XDG_RUNTIME_DIR}"
-            fi
-        fi
-
-        # Enable SSH agent
-        eval $(keychain --noask --eval --quiet)
-
-        # Various exports
-
-        export SHELL="$(command -v zsh)"
-
         export QT_QPA_PLATFORMTHEME=qt5ct
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
