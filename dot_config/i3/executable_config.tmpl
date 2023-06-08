@@ -535,7 +535,7 @@ exec --no-startup-id lxpolkit
 
 # starting Steam
 {{- if eq .chezmoi.hostname "SpectreOS-deck" }}
-exec --no-startup-id steam
+exec --no-startup-id steam -steamdeck -gamepadui
 {{- end }}
 
 #######
