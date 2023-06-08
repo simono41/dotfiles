@@ -206,6 +206,8 @@ exec_always {
     gsettings set $gnome-schema font-name 'Cantarell 12'
     gsettings set org.gnome.desktop.wm.preferences theme "Arc-Dark"
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.default-applications.terminal exec wezterm
+    gsettings set org.gnome.desktop.default-applications.terminal exec-arg start
 }
 
 # background
