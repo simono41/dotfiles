@@ -6,7 +6,7 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
         if ! export ${wort%=*}=${wort#*=}; then echo "cannot export ${wort}!!!"; fi
     done
 
-    export QT_QPA_PLATFORMTHEME=qt5ct
+    export QT_QPA_PLATFORMTHEME=qt6ct
 
     export PATH="$PATH:/home/${USER}/.local/bin/"
     export PATH="$PATH:/home/${USER}/go/bin/"
@@ -40,12 +40,14 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     # Various exports
     export SHELL="$(command -v zsh)"
 
+    export TERMINAL=wezterm
+    export EDITOR=vim
+
     # Falls autostartdesktop auf i3 gesetzt wird, wird i3 statt sway gestartet
     if [ "${autostartdesktop}" = "i3" ]; then
         echo "exec i3" > ~/.xinitrc
         startx
     else
-        export QT_QPA_PLATFORMTHEME=qt5ct
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
         export GDK_BACKEND=wayland
@@ -62,9 +64,6 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
 
         export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
         export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
-
-        export TERMINAL=wezterm
-        export EDITOR=vim
 
         #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/
 
