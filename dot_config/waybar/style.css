@@ -26,9 +26,11 @@ window#waybar.solo {
 }
 */
 
+/*
 window#waybar.termite {
     background-color: #3F3F3F;
 }
+*/
 
 window#waybar.chromium {
     background-color: #000000;
@@ -93,6 +95,7 @@ button:hover {
 #custom-wl-gammarelay-gamma,
 #custom-events,
 #custom-wvkbd,
+#custom-notification,
 #mpd {
     padding: 0 10px;
     color: #ffffff;
@@ -168,7 +171,8 @@ label:focus {
     background-color: #90b1b1;
 }
 
-#custom-wvkbd {
+#custom-wvkbd,
+#custom-notification {
     background-color: #2980b9;
 }
 
