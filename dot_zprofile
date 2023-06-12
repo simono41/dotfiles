@@ -8,15 +8,6 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
 
     export QT_QPA_PLATFORMTHEME=qt6ct
 
-    export PATH="$PATH:/home/${USER}/.local/bin/"
-    export PATH="$PATH:/home/${USER}/go/bin/"
-    export PATH="$PATH:/home/${USER}/.local/share/flatpak/exports/bin/"
-
-    export XDG_DATA_DIRS="/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:/home/${USER}/.local/share/flatpak/exports/share/"
-
-    # Added by Toolbox App
-    export PATH="$PATH:/home/${USER}/.local/share/JetBrains/Toolbox/scripts"
-
     # First make sure dbus is started
     if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
         export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
@@ -34,6 +25,15 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
         fi
     fi
 
+    export PATH="$PATH:/home/${USER}/.local/bin/"
+    export PATH="$PATH:/home/${USER}/go/bin/"
+    export PATH="$PATH:/home/${USER}/.local/share/flatpak/exports/bin/"
+
+    export XDG_DATA_DIRS="/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:/home/${USER}/.local/share/flatpak/exports/share/"
+
+    # Added by Toolbox App
+    export PATH="$PATH:/home/${USER}/.local/share/JetBrains/Toolbox/scripts"
+
     # Enable SSH agent
     eval $(keychain --noask --eval --quiet)
 
@@ -46,6 +46,9 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     # Falls autostartdesktop auf i3 gesetzt wird, wird i3 statt sway gestartet
     if [ "${autostartdesktop}" = "i3" ]; then
         echo "exec i3" > ~/.xinitrc
+        startx
+    elif [ "${autostartdesktop}" = "steamos" ]; then
+        echo "exec steamos-session" > ~/.xinitrc
         startx
     else
         export QT_QPA_PLATFORM=wayland
