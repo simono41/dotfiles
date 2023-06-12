@@ -42,6 +42,9 @@ bindsym $mod+Shift+d exec j4-dmenu-desktop --dmenu="~/.config/sway/bemenu-run.sh
 bindsym $mod+y exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
 bindsym $mod+Shift+y exec ~/.config/fuzzel/fuzzel-pass.sh
 
+# Notification Menu
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
 # change focus
 bindsym $mod+j focus left
 bindsym $mod+k focus down
@@ -356,7 +359,10 @@ exec nm-applet
 exec blueman-applet
 
 # Start mako-notifyd Service
-exec "mako -c .config/mako/config"
+#exec "mako -c .config/mako/config"
+
+# Start swaync notify Service
+exec swaync
 
 # authentication manager https://wiki.archlinux.org/title/Polkit
 exec /usr/bin/lxqt-policykit-agent
