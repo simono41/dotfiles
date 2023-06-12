@@ -370,9 +370,6 @@ exec /usr/bin/lxqt-policykit-agent
 # Clipboard Manager
 exec wl-paste -t text --watch clipman store
 
-# wvkbd - On-screen keyboard for wlroots that sucks less
-exec wvkbd-mobintl --hidden --fn 'DejaVuSansMono Nerd Font 14' -l 'simple,special,emoji,arabic' -L 240
-
 exec swayidle -w \
          timeout 300 'swaylock -f' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \

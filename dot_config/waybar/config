@@ -251,11 +251,14 @@
         "return-type": "json"
     },
     "custom/wvkbd": {
+        "tooltip": false,
         "format": "{icon}",
         "format-icons": {
             "default": ""
         },
-        "on-click": "pkill --signal SIGRTMIN wvkbd-mobintl"
+        //"interval": "once",
+        //"exec": "if pgrep wvkbd-mobintl >/dev/null; then echo \"󰌐\"; else echo \"󰌌\"; fi",
+        "on-click": "if pgrep wvkbd-mobintl >/dev/null; then pkill wvkbd-mobintl; else wvkbd-mobintl --fn 'DejaVuSansMono Nerd Font 14' -l 'simple,special,emoji,arabic' -L 240; fi"
     },
     "custom/notification": {
         "tooltip": false,
