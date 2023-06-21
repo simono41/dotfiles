@@ -1,4 +1,4 @@
-if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
     # Lade die Bootparameter in den Variablen
     for wort in $(cat /proc/cmdline)
     do
@@ -50,6 +50,8 @@ if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
     elif [ "${autostartdesktop}" = "steamos" ]; then
         echo "exec steamos-session" > ~/.xinitrc
         startx
+    elif [ "${autostartdesktop}" = "gnome" ]; then
+        MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
     else
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
