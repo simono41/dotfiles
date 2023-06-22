@@ -90,9 +90,9 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -i -dmenu -font "snap 12" -bg "#222222" -fg "#888888" -hlbg "#285577" -hlfg "#ffffff" -opacity 90 -m 0 -location 2'
-#bindsym $mod+d exec --no-startup-id j4-dmenu-desktop --dmenu="~/.config/sway/bemenu-run.sh -l 30" --term="wezterm" --no-generic
 
 bindsym $mod+d exec --no-startup-id rofi -show run
+bindsym $mod+shift+d exec --no-startup-id j4-dmenu-desktop --dmenu="~/.config/sway/bemenu-run.sh -l 30" --term="wezterm" --no-generic
 bindsym $mod+y exec CM_LAUNCHER=rofi CM_HISTLENGTH=15 clipmenu
 bindsym $mod+shift+y exec .config/rofi/rofi-pass.sh
 
