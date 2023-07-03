@@ -1,10 +1,13 @@
 #!/usr/bin/env python
 
+import datetime
 import json
 import subprocess
 from html import escape
 
 data = {}
+
+today = datetime.date.today().strftime("%Y-%m-%d")
 
 output = subprocess.check_output("khal list now 7days --format \"{start-end-time-style} {title}\"", shell=True).decode("utf-8")
 
@@ -17,7 +20,7 @@ for line in lines:
     new_lines.append(clean_line)
 output = "\n".join(new_lines).strip()
 
-if "Today" in output:
+if today in output:
     data['text'] = " " + output.split('\n')[1]
 else:
     data['text'] = ""
