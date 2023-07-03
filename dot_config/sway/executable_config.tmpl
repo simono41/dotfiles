@@ -332,17 +332,18 @@ bindsym $mod+x mode "$mode_system"
 
 ## Manual management of external displays
 # Set the shortcuts and what they do
-set $mode_display Ext Screen (v) eDP ON, (h) HDMI ON, (x) eDP OFF, (y) HDMI OFF
+set $mode_display Ext Screen (v) eDP ON, (h) DP ON, (x) eDP OFF, (y) DP OFF
 mode "$mode_display" {
-    bindsym v exec output eDP-1 enable && output eDP-1 pos 1920 0 res 1920x1080, mode "default"
-    bindsym h exec output HDMI-A-1 enable && output HDMI-A-1 pos 1920 0 res 1920x1080, mode "default"
-    bindsym x exec output eDP-1 disable, mode "default"
-    bindsym y exec output HDMI-A-1 disable, mode "default"
+    bindsym v exec swaymsg output eDP-1 enable && swaymsg output eDP-1 pos 1920 280 res 1920x1080, mode "default"
+    bindsym h exec swaymsg output DP-1 enable && swaymsg output DP-1 pos 0 0 res 1920x1080, mode "default"
+    bindsym x exec swaymsg output eDP-1 disable, mode "default"
+    bindsym y exec swaymsg output DP-1 disable, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+bindsym $mod+m mode "$mode_display"
 
 # For use a Virtual VNC Connection with wayvnc
 #swaymsg create_output
