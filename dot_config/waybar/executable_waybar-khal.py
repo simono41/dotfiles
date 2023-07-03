@@ -9,7 +9,10 @@ data = {}
 
 today = datetime.date.today().strftime("%Y-%m-%d")
 
-output = subprocess.check_output("khal list now 7days --format \"{start-end-time-style} {title}\"", shell=True).decode("utf-8")
+next_week = (datetime.date.today() +
+             datetime.timedelta(days=10)).strftime("%Y-%m-%d")
+
+output = subprocess.check_output("khal list now " + next_week + " --format \"{start-end-time-style} {title}\"", shell=True).decode("utf-8")
 
 lines = output.split("\n")
 new_lines = []
