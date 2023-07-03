@@ -18,7 +18,7 @@ lines = output.split("\n")
 new_lines = []
 for line in lines:
     clean_line = escape(line).split(" ::")[0]
-    if len(clean_line) and not clean_line[0] in ['0', '1', '2']:
+    if len(clean_line) and clean_line[0].isalpha():
         clean_line = "\n<b>"+clean_line+"</b>"
     new_lines.append(clean_line)
 output = "\n".join(new_lines).strip()
