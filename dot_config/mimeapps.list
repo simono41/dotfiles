@@ -139,3 +139,4 @@ application/xml=chromium.desktop
 font/otf=org.gnome.font-viewer.desktop
 font/woff=org.gnome.font-viewer.desktop
 font/ttf=org.gnome.font-viewer.desktop
+application/json=code-oss.desktop
