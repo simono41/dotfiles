@@ -47,9 +47,6 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
     if [ "${autostartdesktop}" = "i3" ]; then
         echo "exec i3" > ~/.xinitrc
         startx
-    elif [ "${autostartdesktop}" = "steamos" ]; then
-        echo "exec steamos-session" > ~/.xinitrc
-        startx
     elif [ "${autostartdesktop}" = "gnome" ]; then
         MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
     else
