@@ -1,0 +1,12 @@
+[Added Associations]
+image/png=lximage-qt.desktop;
+application/pdf=org.gnome.Evince.desktop;
+application/json=userapp-wezterm-vim-LS2K41.desktop;code-oss.desktop;
+
+[Default Applications]
+text/html=chromium.desktop
+x-scheme-handler/http=chromium.desktop
+x-scheme-handler/https=chromium.desktop
+x-scheme-handler/about=chromium.desktop
+x-scheme-handler/unknown=chromium.desktop
+inode/directory=pcmanfm-qt.desktop
