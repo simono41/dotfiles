@@ -140,8 +140,10 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "on-scroll-up": "~/.config/waybar/brightness-up.sh",
-        "on-scroll-down": "~/.config/waybar/brightness-down.sh",
+        "on-scroll-up": "~/.config/waybar/brightness-up.sh 1",
+        "on-scroll-down": "~/.config/waybar/brightness-down.sh 1",
+        "on-click": "~/.config/waybar/brightness-up.sh 5",
+        "on-click-right": "~/.config/waybar/brightness-down.sh 5",
         "format-icons": [
             "",
             "",
