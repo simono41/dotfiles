@@ -287,11 +287,10 @@ set $mode_launcher Launch: [c]hromium [t]hunderbird [p]avucontrol [a]randr file[
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" {
-    bindsym f exec chromium
-    bindsym t exec thunderbird
-    bindsym p exec pavucontrol
-    bindsym a exec arandr
-    bindsym m exec pcmanfm
+    bindsym f exec chromium, mode "default"
+    bindsym p exec pavucontrol, mode "default"
+    bindsym a exec arandr, mode "default"
+    bindsym m exec pcmanfm, mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
@@ -299,7 +298,6 @@ mode "$mode_launcher" {
 
 bindsym $mod+b exec chromium
 bindsym $mod+t exec pcmanfm
-bindsym $mod+shift+t exec thunderbird
 bindsym $mod+n exec wezterm start nmtui
 
 #bindsym $mod+o exec termite -e /usr/bin/alsamixer
