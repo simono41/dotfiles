@@ -12,7 +12,8 @@ set $mod Mod1
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 #font pango:monospace 12
-font pango:Terminus (TTF) Bold 12
+#font pango:Terminus (TTF) Bold 12
+font pango:"Hack Nerd Font" 9
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
@@ -187,6 +188,32 @@ bar {
 }
 
 seat seat0 xcursor_theme capitaine-cursors 16
+
+#
+# gaps
+#
+gaps inner 5
+smart_gaps off
+
+#
+# Titlebars
+#
+font pango:"Hack Nerd Font" 9
+default_border pixel 3
+smart_borders on
+default_floating_border normal
+hide_edge_borders none
+titlebar_border_thickness 0
+
+
+#
+# Below is SwayFX extensions
+#
+
+blur on
+smart_corner_radius on
+corner_radius 10
+default_dim_inactive 0.2
 
 # display resoulution
 
@@ -377,19 +404,6 @@ exec swayidle -w \
 exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
 exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -t 200
 exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 20 -a rt
-
-default_border none
-default_floating_border normal
-
-# Smart Gaps
-smart_gaps on
-
-# Smart Borders
-smart_borders on
-
-gaps inner 5
-gaps outer 0
-gaps top -5
 
 #xwayland disable
 
