@@ -26,10 +26,7 @@ if ! cat /etc/locale.conf | grep LANG=${lang}.UTF-8 1>/dev/null 2>&1; then
 
     echo "${lang}.UTF-8 UTF-8" > /etc/locale.gen
     echo "${lang} ISO-8859-1" >> /etc/locale.gen
-    #echo "${lang}@euro ISO-8859-15" >> /etc/locale.gen
-    if ! grep 'en_US.UTF-8 UTF-8' /etc/locale.gen 1>/dev/null 2>&1; then
-        echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
-    fi
+    echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 
     locale-gen
 fi
