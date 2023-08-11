@@ -210,10 +210,12 @@ titlebar_border_thickness 0
 # Below is SwayFX extensions
 #
 
+{{- if ne .chezmoi.hostname "simon-mac" }}
 blur on
 smart_corner_radius on
 corner_radius 10
 default_dim_inactive 0.2
+{{- end }}
 
 # display resoulution
 
