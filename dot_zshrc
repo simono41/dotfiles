@@ -63,6 +63,11 @@ function rm
   /bin/rm $@ -I
 }
 
+function keytype() {
+  echo "Eingabe wird in 5 Sekunden ausgegeben!"
+  sleep 5 && { echo typedelay 100; echo type $1; } | DOTOOL_XKB_LAYOUT=de dotool && notify-send done
+}
+
 alias k="kubectl"
 alias serve="python -m http.server 8000"
 
