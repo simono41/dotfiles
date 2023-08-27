@@ -1,0 +1,9 @@
+default-cache-ttl 300
+max-cache-ttl 999999
+{{ if eq .chezmoi.os "darwin" -}}
+# macOS contents
+pinentry-program /opt/homebrew/bin/pinentry-mac
+{{ else if eq .chezmoi.os "linux" -}}
+# Linux contents
+pinentry-program /usr/bin/pinentry-qt
+{{ end -}}
