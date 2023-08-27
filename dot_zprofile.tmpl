@@ -1,0 +1,6 @@
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   include ".zprofile_darwin" -}}
+{{- else if eq .chezmoi.os "linux" -}}
+{{-   include ".zprofile_linux" -}}
+{{- end -}}
+
