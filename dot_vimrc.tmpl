@@ -29,10 +29,10 @@ filetype plugin on
 " Load an indent file for the detected file type.
 filetype indent on
 
-" MacOS fzf port
-{{- if eq .chezmoi.os "darwin" -}}
+" Device Specefic Ports
+{{ if eq .chezmoi.os "darwin" }}
 set rtp+=/opt/homebrew/opt/fzf
-{{- end -}}
+{{ end }}
 
 " Turn syntax highlighting on.
 syntax on
