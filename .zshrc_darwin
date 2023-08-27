@@ -1,3 +1,116 @@
+autoload -U promptinit; promptinit;
+autoload -U compinit bashcompinit
+compinit
+bashcompinit
+zstyle ':completion:*' menu yes select
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
+zstyle ':completion:*' rehash true
+
+autoload -U select-word-style
+select-word-style bash
+
+setopt auto_cd
+setopt HIST_IGNORE_SPACE
+setopt interactive_comments
+setopt inc_append_history
+setopt share_history
+setopt AUTO_PUSHD
+setopt PUSHD_IGNORE_DUPS
+setopt PUSHD_SILENT
+
+if [[ -t 0 && $- = *i* ]]
+then
+    stty -ixon
+fi
+
+unset histchars
+
+for index ({1..9}) alias "$index"="cd +${index}"; unset index
+
+HISTFILE=~/.zsh_history
+HISTSIZE=10000000
+SAVEHIST=10000000
+
+bindkey '^[.' insert-last-word
+bindkey "^[[H" beginning-of-line # HOME
+bindkey "^[[F" end-of-line # END
+bindkey "^[OH" beginning-of-line # HOME
+bindkey "^[OF" end-of-line # END
+bindkey "^[[3~" delete-char # DEL
+bindkey -M emacs '\e#' pound-insert # ALT+#
+bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^S' history-incremental-pattern-search-forward
+bindkey '^[[1;3C' forward-word
+bindkey '^[[1;3D' backward-word
+
+mem() {
+  echo $(echo $(smem -t -P $1 | tail -n 1 | rev | cut -d ' ' -f 2 | rev) / 1024 | bc) MB
+}
+
+alias eZ="vim ~/.zshrc"
+alias eI="vim ~/.config/sway/config"
+alias eW="vim ~/.config/wezterm/wezterm.lua"
+alias eI="vim ~/.config/sway/config"
+alias eV="vim ~/.vimrc"
+alias eS="vim ~/.config/starship.toml"
+alias wetter="curl http://v3.wttr.in/Niedersachsen.sxl; sleep 5; curl http://v1.wttr.in/Hildesheim"
+alias history="history 0"
+alias etcher="usbimager"
+alias ls='ls --color=auto'
+
+function rm
+{
+  /bin/rm $@ -I
+}
+
+function keytype() {
+  echo "Eingabe wird in 5 Sekunden ausgegeben!"
+  sleep 5 && { echo typedelay 100; echo type $1; } | DOTOOL_XKB_LAYOUT=de dotool && notify-send done
+}
+
+alias k="kubectl"
+alias serve="python -m http.server 8000"
+
+function imgcat()
+{
+  local CNT=0
+  local IFS=$'\n'
+  local posY=$(($(echo -e "cols" | tput -S) / 2))
+  local posX=$(($(echo -e "lines" | tput -S) / 4))
+
+  for i in $(find $1 -type f -exec file --mime-type {} \+ | awk -F: '{if ($2 ~/image\//) print $1}'); do
+    CNT=$((CNT+1))
+    if test $(($CNT % 2)) -eq 0 && test "$2" != "-1"; then
+      printf "\033[${posX}A"
+      printf "\033[${posY}C"
+      echo -e "==== $(basename $i) ===="
+      printf "\033[${posY}C"
+    else
+      echo -e "==== $(basename $i) ===="
+    fi
+
+    if echo "$i" | grep -e ".svg$" &> /dev/null; then
+      ffmpeg -i "$i" -vf scale=640:-1 -f image2pipe -vcodec png - 2> /dev/null | wezterm imgcat --height 20%
+    else
+      wezterm imgcat --height 20% "$i";
+    fi
+  done
+}
+
+function fixvmware() {
+  sudo systemctl restart docker
+  virsh --connect qemu:///system net-destroy default
+  virsh --connect qemu:///system net-start --network default
+}
+
+## colored prompt
+autoload -U colors && colors
+PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%/ %{$reset_color%}% "
+## called when executing a command
+function preexec {
+    print -Pn "\e]0;${(q)1}\e\\"
+}
+
 if type brew &>/dev/null
 then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
@@ -13,5 +126,7 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 export PATH
+
+export EDITOR=vim
 
 source <(/opt/homebrew/bin/starship init zsh --print-full-init)
