@@ -136,7 +136,7 @@ return {
   scrollback_lines = 999999,
   enable_scroll_bar = false,
   adjust_window_size_when_changing_font_size=false,
-  font =  wezterm.font_with_fallback({"Hack", "Twemoji"}),
+  font =  wezterm.font_with_fallback({"Hack Nerd Font", "JetBrains Mono", "Hack", "Twemoji"}),
   font_size = 15,
   force_reverse_video_cursor = false,
   colors = {
