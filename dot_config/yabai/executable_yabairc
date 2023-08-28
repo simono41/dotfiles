@@ -38,7 +38,7 @@ yabai -m config --space games layout float
 # global settings
 yabai -m config                                 \
     mouse_follows_focus          off            \
-    focus_follows_mouse          off            \
+    focus_follows_mouse          autoraise            \
     window_origin_display        default        \
     window_placement             second_child   \
     window_zoom_persist          on             \
