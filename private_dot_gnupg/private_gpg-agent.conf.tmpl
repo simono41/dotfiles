@@ -5,5 +5,13 @@ max-cache-ttl 999999
 pinentry-program /opt/homebrew/bin/pinentry-mac
 {{ else if eq .chezmoi.os "linux" -}}
 # Linux contents
+
+{{ if eq .chezmoi.hostname "brothertec" -}}
+# Linux Server contents
+pinentry-program /usr/bin/pinentry
+{{ else -}}
+# Linux Desktop contents
 pinentry-program /usr/bin/pinentry-qt
+{{ end -}}
+
 {{ end -}}
