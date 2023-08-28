@@ -87,13 +87,13 @@
 
 # application specific bindings
 #
-cmd - n [
-    "kitty"       : echo "hello kitty"
-    *             : echo "hello everyone"
-    "qutebrowser" : echo "hello qutebrowser"
-    "terminal"    ~
-    "finder"      : false
-]
+#cmd - n [
+#    "kitty"       : echo "hello kitty"
+#    *             : echo "hello everyone"
+#    "qutebrowser" : echo "hello qutebrowser"
+#    "terminal"    ~
+#    "finder"      : false
+#]
 
 # specify a file that should be included as an additional config-file.
 # treated as an absolutepath if the filename begins with '/' otherwise
@@ -114,10 +114,10 @@ cmd - n [
 cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm start --always-new-process
 
 # open qutebrowser
-cmd + shift - return : ~/Scripts/qtb.sh
+#cmd + shift - return : ~/Scripts/qtb.sh
 
 # open mpv
-cmd - m : open -na /Applications/mpv.app $(pbpaste)
+#cmd - m : open -na /Applications/mpv.app $(pbpaste)
 
 # ############################################################### #
 # THE FOLLOWING SECTION CONTAIN SIMPLE MAPPINGS DEMONSTRATING HOW #
@@ -130,37 +130,37 @@ shift + cmd - m : mpv $(pbpaste)
 
 # focus window
 alt - x : yabai -m window --focus recent
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+alt - left : yabai -m window --focus west
+alt - down : yabai -m window --focus south
+alt - up : yabai -m window --focus north
+alt - right : yabai -m window --focus east
 alt - z : yabai -m window --focus stack.prev
 alt - c : yabai -m window --focus stack.next
 
 # swap window
-shift + alt - x : yabai -m window --swap recent
-shift + alt - h : yabai -m window --swap west
-shift + alt - j : yabai -m window --swap south
-shift + alt - k : yabai -m window --swap north
-shift + alt - l : yabai -m window --swap east
+#shift + alt - x : yabai -m window --swap recent
+#shift + alt - left : yabai -m window --swap west
+#shift + alt - down : yabai -m window --swap south
+#shift + alt - up : yabai -m window --swap north
+#shift + alt - right : yabai -m window --swap east
 
 # move window
-shift + cmd - h : yabai -m window --warp west
-shift + cmd - j : yabai -m window --warp south
-shift + cmd - k : yabai -m window --warp north
-shift + cmd - l : yabai -m window --warp east
+shift + cmd - left : yabai -m window --warp west
+shift + cmd - down : yabai -m window --warp south
+shift + cmd - up : yabai -m window --warp north
+shift + cmd - right : yabai -m window --warp east
 
 # balance size of windows
 shift + alt - 0 : yabai -m space --balance
 
 # make floating window fill screen
-shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
+#shift + alt - up     : yabai -m window --grid 1:1:0:0:1:1
 
 # make floating window fill left-half of screen
-shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
+#shift + alt - left   : yabai -m window --grid 1:2:0:0:1:1
 
 # make floating window fill right-half of screen
-shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
+#shift + alt - right  : yabai -m window --grid 1:2:1:0:1:1
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
 # shift + cmd - n : yabai -m space --create && \
@@ -224,22 +224,22 @@ ctrl + cmd - 2  : yabai -m window --display 2 && yabai -m display --focus 2
 ctrl + cmd - 3  : yabai -m window --display 3 && yabai -m display --focus 3
 
 # move window
-shift + ctrl - a : yabai -m window --move rel:-20:0
-shift + ctrl - s : yabai -m window --move rel:0:20
-shift + ctrl - w : yabai -m window --move rel:0:-20
-shift + ctrl - d : yabai -m window --move rel:20:0
+#shift + ctrl - left : yabai -m window --move rel:-20:0
+#shift + ctrl - down : yabai -m window --move rel:0:20
+#shift + ctrl - up : yabai -m window --move rel:0:-20
+#shift + ctrl - right : yabai -m window --move rel:20:0
 
 # increase window size
-shift + alt - a : yabai -m window --resize left:-20:0
-shift + alt - s : yabai -m window --resize bottom:0:20
-shift + alt - w : yabai -m window --resize top:0:-20
-shift + alt - d : yabai -m window --resize right:20:0
+shift + alt - left : yabai -m window --resize left:-20:0
+shift + alt - down : yabai -m window --resize bottom:0:20
+shift + alt - up : yabai -m window --resize top:0:-20
+shift + alt - right : yabai -m window --resize right:20:0
 
 # decrease window size
-shift + cmd - a : yabai -m window --resize left:20:0
-shift + cmd - s : yabai -m window --resize bottom:0:-20
-shift + cmd - w : yabai -m window --resize top:0:20
-shift + cmd - d : yabai -m window --resize right:-20:0
+shift + ctrl - left : yabai -m window --resize left:20:0
+shift + ctrl - down : yabai -m window --resize bottom:0:-20
+shift + ctrl - up : yabai -m window --resize top:0:20
+shift + ctrl - right : yabai -m window --resize right:-20:0
 
 # set insertion point in focused container
 ctrl + alt - h : yabai -m window --insert west
@@ -274,7 +274,7 @@ alt - e : yabai -m window --toggle split
 
 # float / unfloat window and restore position
 # alt - t : yabai -m window --toggle float && /tmp/yabai-restore/$(yabai -m query --windows --window | jq -re '.id').restore 2>/dev/null || true
-alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + alt - space : yabai -m window --toggle float --grid 4:4:1:1:2:2
 
 # toggle sticky (show on all spaces)
 alt - s : yabai -m window --toggle sticky
