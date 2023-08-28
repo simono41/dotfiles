@@ -27,6 +27,17 @@ yabai -m rule --add app="^Steam$" space=games manage=off
 yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility)$" manage=off
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
+# float system preferences
+yabai -m rule --add app="^System Preferences$" manage=off
+yabai -m rule --add app="^choose$" manage=off
+
+# show digital colour meter topmost and on all spaces
+yabai -m rule --add app="^Digital Colou?r Meter$" sticky=on
+
+# refresh my Übersicht bar when the space changes
+yabai -m signal --add event=space_changed \
+    action="osascript -e 'tell application \"Übersicht\" to refresh widget id \"spaces-widget\"'"
+
 # signals
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"

@@ -111,7 +111,7 @@
 # ]
 
 # open terminal, blazingly fast compared to iTerm/Hyper
-cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm start --always-new-process
+cmd - return : /Applications/WezTerm.app/Contents/MacOS/wezterm
 
 # open qutebrowser
 #cmd + shift - return : ~/Scripts/qtb.sh
@@ -285,8 +285,14 @@ alt - o : yabai -m window --toggle topmost
 # toggle picture-in-picture
 alt - p : yabai -m window --toggle border --toggle pip
 
+# Screenshot
+alt + shift - p : screencapture -oWx ~/Pictures/"$(TZ=UTC date '+%F_%H-%M-%S')".png
+
 # change layout of desktop
 ctrl + alt - a : yabai -m space --layout bsp
 ctrl + alt - d : yabai -m space --layout float
 ctrl + alt - s : yabai -m space --layout $(yabai -m query --spaces --space | jq -r 'if .type == "bsp" then "float" else "bsp" end')
+
+cmd + shift - y : ~/.config/choose/choose-pass.sh
+cmd - y : ~/.config/choose/choose-clip.sh
 
