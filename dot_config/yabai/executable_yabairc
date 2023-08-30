@@ -16,19 +16,18 @@ yabai -m space 7 --label media
 yabai -m space 8 --label games
 
 # window rules
+yabai -m rule --add app="^WezTerm$" space=code
+yabai -m rule --add app="^(Safari|Firefox)$" space=web
 yabai -m rule --add app="^Mail$" space=mail
-yabai -m rule --add app="^Safari$" space=web
-yabai -m rule --add app="^Notes$" space=notes
-yabai -m rule --add app="^ida64$" space=re
-yabai -m rule --add app="^Transmission$" space=media
-yabai -m rule --add app="^Spotify$" space=media
+yabai -m rule --add app="^Element$" space=chat
 yabai -m rule --add app="^Discord$" space=social grid=1:1:0:0:1:1 manage=off
+yabai -m rule --add app="^(Notes|Joplin)$" space=notes
+yabai -m rule --add app="^(Spotify|Fineamp|Musik)$" space=media
 yabai -m rule --add app="^Steam$" space=games manage=off
-yabai -m rule --add app="^(Calculator|System Preferences|Archive Utility)$" manage=off
-yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 
-# float system preferences
-yabai -m rule --add app="^System Preferences$" manage=off
+# Advanced Window rules
+yabai -m rule --add app="^(Calculator|Rechner|System Preferences|Systemeinstellungen|Einstellungen|System Settings|Preferences|Aktivitätsanzeige|Archive Utility)$" manage=off
+yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
 yabai -m rule --add app="^choose$" manage=off
 
 # show digital colour meter topmost and on all spaces
