@@ -1,6 +1,5 @@
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   include ".zprofile_darwin" -}}
+{{-   template "zprofile_darwin.tmpl" . -}}
 {{- else if eq .chezmoi.os "linux" -}}
-{{-   include ".zprofile_linux" -}}
+{{-   template "zprofile_linux.tmpl" . -}}
 {{- end -}}
-

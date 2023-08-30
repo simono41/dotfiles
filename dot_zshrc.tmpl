@@ -1,6 +1,5 @@
 {{- if eq .chezmoi.os "darwin" -}}
-{{-   include ".zshrc_darwin" -}}
+{{-   template "zshrc_darwin.tmpl" . -}}
 {{- else if eq .chezmoi.os "linux" -}}
-{{-   include ".zshrc_linux" -}}
+{{-   template "zshrc_linux.tmpl" . -}}
 {{- end -}}
-
