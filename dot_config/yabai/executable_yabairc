@@ -23,11 +23,12 @@ yabai -m rule --add app="^Element$" space=chat
 yabai -m rule --add app="^Discord$" space=social grid=1:1:0:0:1:1 manage=off
 yabai -m rule --add app="^(Notes|Joplin)$" space=notes
 yabai -m rule --add app="^(Spotify|Fineamp|Musik)$" space=media
-yabai -m rule --add app="^Steam$" space=games manage=off
+yabai -m rule --add app="^Steam Helper$" space=games manage=off
 
 # Advanced Window rules
 yabai -m rule --add app="^(Calculator|Rechner|System Preferences|Systemeinstellungen|Einstellungen|System Settings|Preferences|Aktivitätsanzeige|Archive Utility)$" manage=off
 yabai -m rule --add app="^mpv$" manage=off border=off sticky=on layer=above opacity=1.0 grid=8:8:6:0:2:2
+yabai -m rule --add app="^(JetBrains Toolbox|PyCharm)$" manage=off
 yabai -m rule --add app="^choose$" manage=off
 
 # show digital colour meter topmost and on all spaces
