@@ -70,6 +70,16 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# Allow switching between workspaces with left and right swipes
+bindgesture swipe:right workspace next
+bindgesture swipe:left workspace prev
+    
+# Allow container movements by pinching them
+bindgesture pinch:inward+up move up
+bindgesture pinch:inward+down move down
+bindgesture pinch:inward+left move left
+bindgesture pinch:inward+right move right
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
