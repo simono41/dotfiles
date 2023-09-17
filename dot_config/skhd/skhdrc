@@ -297,3 +297,5 @@ cmd + shift - y : ~/.config/choose/choose-pass.sh
 cmd - y : ~/.config/choose/choose-clip.sh
 
 cmd + shift - q : kill $(~/scripts/get_current-window.py pid)
+
+cmd + shift - r : yabai --restart-service && skhd --restart-service
