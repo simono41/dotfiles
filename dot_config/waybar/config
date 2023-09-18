@@ -278,7 +278,8 @@
             "default": ""
         },
         "exec": "~/.config/waybar/waybar-khal.py",
-        "return-type": "json"
+        "return-type": "json",
+        "on-click": "wezterm start khal interactive"
     },
     "custom/wvkbd": {
         "tooltip": false,
