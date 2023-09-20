@@ -76,6 +76,9 @@ focus_on_window_activation urgent
 # start a terminal
 bindsym $mod+Return exec wezterm
 
+# Start Offline Speech
+bindsym $mod+F1 exec ~/.config/nerd-dictation/run-dictation.sh
+
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -337,10 +340,6 @@ for_window [class="calcurse"] floating enable border none
 for_window [class="newsbeuter"] floating enable border none
 for_window [class="weechat"] floating enable border none
 
-# Starter für Progs im Terminal
-bindsym $mod+F1 exec wezterm start arch-install
-bindsym $mod+F2 exec wezterm start htop
-
 # assign special properties
 for_window [class="^Pavucontrol$"] floating enable
 for_window [title="MonoDevelop External Console"] floating enable
@@ -533,6 +532,9 @@ exec --no-startup-id lxpolkit
 
 # notify service from smartphone
 #exec --no-startup-id /opt/an2linuxserver/an2linuxserver.py
+
+# Using ydotool for nerd-dictation
+exec --no-startup-id ydotoold
 
 # starting Steam
 {{- if eq .chezmoi.hostname "SpectreOS-deck" }}

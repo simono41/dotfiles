@@ -22,7 +22,7 @@ set $inactive-text-color #676E7D
 set $urgent-bg-color     #E53935
 
 # window colors
-#                       border              background         text                 indicat>
+#                       border              background         text                 indicat
 client.focused          $bg-color           $bg-color          $text-color          #00ff00
 client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
 client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
@@ -33,6 +33,9 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec wezterm
+
+# Start Offline Speech
+bindsym $mod+F1 exec ~/.config/nerd-dictation/run-dictation.sh
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -407,6 +410,9 @@ exec /usr/bin/lxqt-policykit-agent
 
 # Clipboard Manager
 exec wl-paste -t text --watch clipman store
+
+# Using ydotool for nerd-dictation
+exec ydotoold
 
 exec swayidle -w \
          timeout 300 'swaylock -f' \
