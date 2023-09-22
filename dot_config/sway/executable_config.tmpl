@@ -234,7 +234,8 @@ default_dim_inactive 0.2
 
 # machine-specific configuration
 {{- if eq .chezmoi.hostname "SpectreOS" }}
-output eDP-1 pos 0 0 res 1920x1080
+output HDMI-A-2 pos 0 0 res 1920x1080
+output eDP-1 pos 1920 0 res 1920x1080
 {{- end }}
 
 {{- if eq .chezmoi.hostname "SpectreOS-deck" }}
