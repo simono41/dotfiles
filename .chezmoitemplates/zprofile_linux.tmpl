@@ -1,3 +1,15 @@
+__dotfiles_wayland_teardown() {
+  # true: as long as we try it's okay
+  #systemctl --user stop sway-session.target || true
+
+  # this teardown makes it easier to switch between compositors
+  unset DISPLAY SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+  systemctl --user unset-environment DISPLAY SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+  if command -v dbus-update-activation-environment >/dev/null; then
+    dbus-update-activation-environment XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+  fi
+}
+
 if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
     # Lade die Bootparameter in den Variablen
     for wort in $(cat /proc/cmdline)
@@ -34,9 +46,8 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
 
     export PATH="$PATH:/home/${USER}/.local/bin/"
     export PATH="$PATH:/home/${USER}/go/bin/"
-    export PATH="$PATH:/home/${USER}/.local/share/flatpak/exports/bin/"
 
-    export XDG_DATA_DIRS="/usr/share/:/usr/local/share/:/var/lib/flatpak/exports/share/:/home/${USER}/.local/share/flatpak/exports/share/"
+    export XDG_DATA_DIRS="/usr/share/:/usr/local/share/"
 
     # Added by Toolbox App
     export PATH="$PATH:/home/${USER}/.local/share/JetBrains/Toolbox/scripts"
@@ -57,6 +68,8 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
     elif [ "${autostartdesktop}" = "gnome" ]; then
         MOZ_ENABLE_WAYLAND=1 QT_QPA_PLATFORM=wayland XDG_SESSION_TYPE=wayland exec dbus-run-session gnome-session
     else
+        __dotfiles_wayland_teardown
+
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
         export GDK_BACKEND=wayland
@@ -76,6 +89,22 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
 
         export PAN_MESA_DEBUG=gl3 #Fix alacritty not starting
         export MOZ_ENABLE_WAYLAND=1 # Fix firefox not starting
+
+        if command -v dbus-update-activation-environment >/dev/null; then
+          dbus-update-activation-environment XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+        fi
+
+        # without this, systemd starts xdg-desktop-portal without these environment variables,
+        # and the xdg-desktop-portal does not start xdg-desktop-portal-wrl as expected
+        # https://github.com/emersion/xdg-desktop-portal-wlr/issues/39#issuecomment-638752975
+        systemctl --user import-environment XDG_CURRENT_DESKTOP XDG_SESSION_DESKTOP XDG_SESSION_TYPE
+
+        # use systemd-run here, because systemd units inherit variables from ~/.config/environment.d
+        # true: ignore errors here so we always do the teardown afterwards
+        # shellcheck disable=SC2068
+        systemd-run --quiet --unit=sway --user --wait sway $@ || true
+
+        __dotfiles_wayland_teardown
 
         #export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:~/.local/lib/
 
