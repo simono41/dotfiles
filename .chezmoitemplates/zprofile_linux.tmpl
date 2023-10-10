@@ -60,8 +60,11 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
         export GDK_BACKEND=wayland
-        export XDG_SESSION_TYPE=wayland
-        export XDG_CURRENT_DESKTOP=sway
+
+        export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
+        export XDG_SESSION_DESKTOP=sway # systemd
+        export XDG_SESSION_TYPE=wayland # xdg/systemd
+
         export WLR_NO_HARDWARE_CURSORS=1
         export CLUTTER_BACKEND=wayland
         export SDL_VIDEODRIVER=wayland
