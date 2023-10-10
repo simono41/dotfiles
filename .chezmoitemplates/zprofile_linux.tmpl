@@ -22,11 +22,6 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
     echo "set systemconfiguration"
     sudo scripts/set-systemsettings.sh
 
-    # Set global environments
-    echo "set global environments"
-
-    export QT_QPA_PLATFORMTHEME=qt6ct
-
     # First make sure dbus is started
     if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
         export DBUS_SESSION_BUS_ADDRESS="$(dbus-daemon --session --fork --print-address)"
@@ -70,6 +65,10 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
     else
         __dotfiles_wayland_teardown
 
+        # Set global environments
+        echo "set global environments"
+
+        export QT_QPA_PLATFORMTHEME=qt6ct
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
         export GDK_BACKEND=wayland
