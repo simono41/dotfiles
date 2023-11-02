@@ -1,0 +1,18 @@
+input * {
+      dwt enabled
+      tap enabled
+      natural_scroll disabled
+      middle_emulation enabled
+
+      # Flat (deactivated) or adaptative (activated)
+      accel_profile adaptive
+
+      # Between -1.0 and 1.0
+      pointer_accel 0.4
+
+      repeat_rate 100
+      repeat_delay 250
+      xkb_layout de
+      xkb_variant nodeadkeys
+      xkb_options grp:alt_space_toggle
+}

@@ -1,0 +1,231 @@
+# start a terminal
+bindsym $mod+Return exec wezterm
+
+# Start Offline Speech
+bindsym $mod+Shift+s exec ~/.config/nerd-dictation/run-dictation.sh
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# Menu
+bindsym $mod+d exec fuzzel
+bindsym $mod+Shift+d exec j4-dmenu-desktop --dmenu="~/.config/sway/bemenu-run.sh -l 30" --term="wezterm" --no-generic
+bindsym $mod+y exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
+bindsym $mod+Shift+y exec ~/.config/fuzzel/fuzzel-pass.sh
+
+# Notification Menu
+bindsym $mod+Shift+n exec swaync-client -t -sw
+
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+odiaeresis focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+odiaeresis move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Allow switching between workspaces with left and right swipes
+bindgesture swipe:right workspace next
+bindgesture swipe:left workspace prev
+    
+# Allow container movements by pinching them
+bindgesture pinch:inward+up move up
+bindgesture pinch:inward+down move down
+bindgesture pinch:inward+left move left
+bindgesture pinch:inward+right move right
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+bindsym --no-repeat $mod+1 workspace number 1; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+2 workspace number 2; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+3 workspace number 3; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+4 workspace number 4; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+5 workspace number 5; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+6 workspace number 6; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+7 workspace number 7; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+8 workspace number 8; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+9 workspace number 9; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+0 workspace number 10; exec "echo 1 > /tmp/sov"
+
+bindsym --no-repeat $mod+Ctrl+1 workspace number 11; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+2 workspace number 12; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+3 workspace number 13; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+4 workspace number 14; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+5 workspace number 15; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+6 workspace number 16; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+7 workspace number 17; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+8 workspace number 18; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+9 workspace number 19; exec "echo 1 > /tmp/sov"
+bindsym --no-repeat $mod+Ctrl+0 workspace number 20; exec "echo 1 > /tmp/sov"
+
+bindsym --release $mod+1 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+2 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+3 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+4 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+5 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+6 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+7 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+8 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+9 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+0 exec "echo 0 > /tmp/sov"
+
+bindsym --release $mod+Ctrl+1 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+2 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+3 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+4 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+5 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+6 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+7 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+8 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+9 exec "echo 0 > /tmp/sov"
+bindsym --release $mod+Ctrl+0 exec "echo 0 > /tmp/sov"
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r reload
+
+mode "resize" {
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+# Fenster zu einem Scratchpad
+bindsym $mod+Shift+minus move scratchpad
+# Zeige das scratcpad window
+bindsym $mod+minus scratchpad show
+
+# Starte Programme über Tastaurkombination
+
+# Press $mod+o followed by either b to launch firefox,
+# Escape or Return to the default mode, respectively.
+set $mode_launcher Launch: [b]rowser [p]avucontrol [w]displays [f]ilemanager
+bindsym $mod+o mode "$mode_launcher"
+
+mode "$mode_launcher" {
+    bindsym b exec firefox, mode "default"
+    bindsym p exec pavucontrol-qt, mode "default"
+    bindsym w exec wdisplays, mode "default"
+    bindsym f exec pcmanfm-qt, mode "default"
+
+    bindsym Escape mode "default"
+    bindsym Return mode "default"
+}
+
+bindsym $mod+b exec firefox
+bindsym $mod+t exec pcmanfm-qt
+bindsym $mod+n exec wezterm start nmtui
+
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%- | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > /tmp/wob
+bindsym XF86MonBrightnessUp exec brightnessctl set +5% | sed -En 's/.*\(([0-9]+)%\).*/\1/p' > /tmp/wob
+
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5% && pamixer --get-volume > /tmp/wob
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5% && pamixer --get-volume > /tmp/wob
+
+bindsym $mod+XF86AudioPlay exec "echo 1 > /tmp/vmp"
+bindsym $mod+XF86AudioNext exec "echo 2 > /tmp/vmp"
+bindsym $mod+XF86AudioPrev exec "echo 3 > /tmp/vmp
+
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86Search exec fuzzel
+
+# monitor-picture
+# 1. Capture a Selection
+bindsym Print exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+# 2. Capture the actually Display
+bindsym Shift+Print exec grim $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
+
+bindsym $mod+p exec wlogout -p layer-shell
+bindsym --no-repeat $mod+Shift+p exec "echo 2 > /tmp/wcp"
+
+# swaylock
+bindsym $mod+shift+x exec swaylock -c 000000
+
+# Power control script - a useful replacement for the normal i3 exiting keybind.
+# https://wiki.archlinux.org/index.php/i3#Shutdown.2C_reboot.2C_lock_screen
+set $mode_system System (1) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (d) shutdown
+mode "$mode_system" {
+    bindsym 1 exec ~/.config/sway/swayexit lock, mode "default"
+    bindsym e exec ~/.config/sway/swayexit logout, mode "default"
+    bindsym s exec ~/.config/sway/swayexit suspend, mode "default"
+    bindsym h exec ~/.config/sway/swayexit hibernate, mode "default"
+    bindsym r exec ~/.config/sway/swayexit reboot, mode "default"
+    bindsym d exec ~/.config/sway/swayexit shutdown, mode "default"
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+x mode "$mode_system"
+
+## Manual management of external displays
+# Set the shortcuts and what they do
+set $mode_display Ext Screen (v) eDP ON, (h) DP ON, (x) eDP OFF, (y) DP OFF
+mode "$mode_display" {
+    bindsym v exec swaymsg output eDP-1 enable && swaymsg output eDP-1 pos 1920 280 res 1920x1080, mode "default"
+    bindsym h exec swaymsg output DP-1 enable && swaymsg output DP-1 pos 0 0 res 1920x1080, mode "default"
+    bindsym x exec swaymsg output eDP-1 disable, mode "default"
+    bindsym y exec swaymsg output DP-1 disable, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+m mode "$mode_display"
+

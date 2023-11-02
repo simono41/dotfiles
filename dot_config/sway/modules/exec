@@ -1,0 +1,29 @@
+# Networkmanager
+exec nm-applet
+
+# Bluetooth
+exec blueman-applet
+
+# Start mako-notifyd Service
+#exec "mako -c .config/mako/config"
+
+# Start swaync notify Service
+exec swaync
+
+# authentication manager https://wiki.archlinux.org/title/Polkit
+exec /usr/bin/lxqt-policykit-agent
+
+# Clipboard Manager
+exec wl-paste -t text --watch clipman store
+
+# Using ydotool for nerd-dictation
+exec ydotoold
+
+exec swayidle -w \
+         timeout 300 'swaylock -f' \
+         timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f'
+
+exec rm -f /tmp/wob && mkfifo /tmp/wob && tail -f /tmp/wob | wob
+exec rm -f /tmp/sov && mkfifo /tmp/sov && tail -f /tmp/sov | sov -t 200
+exec rm -f /tmp/wcp && mkfifo /tmp/wcp && tail -f /tmp/wcp | wcp -f 300x190 -m 20 -a rt

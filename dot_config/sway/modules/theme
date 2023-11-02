@@ -1,0 +1,26 @@
+font pango:"Hack Nerd Font" 9
+
+set $bg-color            #2f343f
+set $inactive-bg-color   #2f343f
+set $text-color          #f3f4f5
+set $inactive-text-color #676E7D
+set $urgent-bg-color     #E53935
+
+# window colors
+#                       border              background         text                 indicat
+client.focused          $bg-color           $bg-color          $text-color          #00ff00
+client.unfocused        $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.focused_inactive $inactive-bg-color $inactive-bg-color $inactive-text-color #00ff00
+client.urgent $urgent-bg-color $urgent-bg-color $text-color #00ff00
+
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema cursor-theme capitaine-cursors
+    gsettings set $gnome-schema gtk-theme Arc-Dark
+    gsettings set $gnome-schema icon-theme Papirus-Dark
+    gsettings set $gnome-schema font-name 'Cantarell 12'
+    gsettings set org.gnome.desktop.wm.preferences theme "Arc-Dark"
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+    gsettings set org.gnome.desktop.default-applications.terminal exec wezterm
+    gsettings set org.gnome.desktop.default-applications.terminal exec-arg start
+}
