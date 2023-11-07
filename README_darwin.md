@@ -41,6 +41,10 @@ brew install browserpass
 PREFIX='/opt/homebrew/opt/browserpass' make hosts-firefox-user -f '/opt/homebrew/opt/browserpass/lib/browserpass/Makefile'
 change gpg path in firefox to /opt/homebrew/bin/gpg
 ~~~
+## For Update Password Manager
+~~~
+brew upgrade --build-from-source browserpass
+~~~
 
 ## Install Tiny Window Manager
 ~~~
