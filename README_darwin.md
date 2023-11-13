@@ -13,6 +13,8 @@ chezmoi init -v --apply ssh://git@brothertec.eu:1023/simono41/dotfiles.git
 
 ## Install some Terminal Tools
 ~~~
+brew install tmux
+brew install reattach-to-user-namespace
 brew install starship
 brew install zsh-completions
 brew install zsh-autosuggestion
