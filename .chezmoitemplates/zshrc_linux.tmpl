@@ -130,3 +130,7 @@ export EDITOR=vim
 eval "$(starship init zsh)"
 
 test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
+
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    exec tmux new-session -A -s ${USER} >/dev/null 2>&1
+fi
