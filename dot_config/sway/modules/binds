@@ -1,5 +1,6 @@
 # start a terminal
 bindsym $mod+Return exec wezterm
+bindsym ctrl+Return exec wezterm
 
 # Start Offline Speech
 bindsym $mod+Shift+s exec ~/.config/nerd-dictation/run-dictation.sh
