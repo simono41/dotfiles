@@ -129,6 +129,7 @@ export EDITOR=vim
 
 eval "$(starship init zsh)"
 
+export LC_TERMINAL=ShellFish
 test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
 
 if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
