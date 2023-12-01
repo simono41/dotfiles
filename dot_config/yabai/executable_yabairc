@@ -18,7 +18,7 @@ yabai -m space 8 --label games
 # window rules
 yabai -m rule --add app="^WezTerm$" space=code
 yabai -m rule --add app="^(Safari|Firefox)$" space=web
-yabai -m rule --add app="^Mail$" space=mail
+yabai -m rule --add app="^(Mail|Canary Mail|Thunderbird)$" space=mail
 yabai -m rule --add app="^Element$" space=chat
 yabai -m rule --add app="^Discord$" space=social grid=1:1:0:0:1:1 manage=off
 yabai -m rule --add app="^(Notes|Joplin)$" space=notes
