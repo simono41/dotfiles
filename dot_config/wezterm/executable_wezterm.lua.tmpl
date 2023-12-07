@@ -129,18 +129,14 @@ return {
     border_right_width = '0.5cell',
   },
   window_background_opacity = 0.97,
-{{ if eq .chezmoi.os "darwin" -}}
-window_decorations = "TITLE | RESIZE",
-{{ else if eq .chezmoi.os "linux" -}}
-window_decorations = "NONE",
-{{ end -}}
+  window_decorations = "TITLE | RESIZE",
   tab_bar_at_bottom = false,
   hide_tab_bar_if_only_one_tab = true,
   use_fancy_tab_bar = false,
   scrollback_lines = 999999,
   enable_scroll_bar = false,
   adjust_window_size_when_changing_font_size=false,
-  font =  wezterm.font_with_fallback({"Hack Nerd Font", "Hack", "JetBrains Mono", "Twemoji"}),
+  font =  wezterm.font_with_fallback({"JetBrains Mono", "Twemoji"}),
   font_size = 15,
   force_reverse_video_cursor = false,
   colors = {
