@@ -1,0 +1,11 @@
+[clipman.desktop][Global Shortcuts]
+_launch=Alt+Y
+
+[fuzzel-plasma-pass.sh.desktop][Global Shortcuts]
+_launch=Alt+Shift+Y
+
+[fuzzel.desktop][Global Shortcuts]
+_launch=Alt+D
+
+[org.wezfurlong.wezterm.desktop][Global Shortcuts]
+_launch=Alt+Return
