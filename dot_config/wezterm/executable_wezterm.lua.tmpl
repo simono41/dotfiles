@@ -129,7 +129,17 @@ return {
     border_right_width = '0.5cell',
   },
   window_background_opacity = 0.97,
-  window_decorations = "TITLE | RESIZE",
+{{ if eq .chezmoi.os "darwin" }}
+window_decorations = "TITLE | RESIZE",
+{{ else if eq .chezmoi.os "linux" }}
+{{- if eq .chezmoi.hostname "SpectreOS" -}}
+window_decorations = "NONE",
+{{- else if eq .chezmoi.hostname "simons-pi" -}}
+window_decorations = "NONE",
+{{- else -}}
+window_decorations = "TITLE | RESIZE",
+{{- end -}}
+{{ end }}
   tab_bar_at_bottom = false,
   hide_tab_bar_if_only_one_tab = true,
   use_fancy_tab_bar = false,
