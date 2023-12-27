@@ -22,7 +22,7 @@
     "modules-right": [
         "idle_inhibitor",
         "pulseaudio",
-        //"network",
+        "network",
         //"cpu",
         //"memory",
         //"temperature",
@@ -203,9 +203,9 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ipaddr}/{cidr} ",
-        "tooltip-format": "{ifname} via {gwaddr} ",
-        "format-linked": "{ifname} (No IP) ",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "on-click-right": "wezterm start nmtui"
@@ -220,8 +220,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -295,13 +295,13 @@
         "tooltip": false,
         "format": "{} {icon}",
         "format-icons": {
-          "notification": "<span foreground='red'><sup></sup></span>",
+          "notification": "<span foreground='red'><sup></sup></span>",
           "none": "",
-          "dnd-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-notification": "<span foreground='red'><sup></sup></span>",
           "dnd-none": "",
-          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "inhibited-notification": "<span foreground='red'><sup></sup></span>",
           "inhibited-none": "",
-          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+          "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
           "dnd-inhibited-none": ""
         },
         "return-type": "json",
