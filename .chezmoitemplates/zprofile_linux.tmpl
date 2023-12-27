@@ -54,7 +54,7 @@ if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
         # Set global environments
         echo "set global environments"
 
-        export QT_QPA_PLATFORMTHEME=qt6ct
+        export QT_QPA_PLATFORMTHEME=qt5ct
         export QT_QPA_PLATFORM=wayland
         export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
         export GDK_BACKEND=wayland
