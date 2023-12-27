@@ -11,7 +11,8 @@ bindsym $mod+Shift+q kill
 # Menu
 bindsym $mod+d exec fuzzel
 bindsym $mod+Shift+d exec j4-dmenu-desktop --dmenu="~/.config/sway/bemenu-run.sh -l 30" --term="wezterm" --no-generic
-bindsym $mod+y exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
+#bindsym $mod+y exec clipman pick --tool=CUSTOM --tool-args="fuzzel -d"
+bindsym $mod+y exec .config/fuzzel/fuzzel-clipman.sh
 bindsym $mod+Shift+y exec ~/.config/fuzzel/fuzzel-pass.sh
 
 # Notification Menu
@@ -42,14 +43,14 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Allow switching between workspaces with left and right swipes
-bindgesture swipe:right workspace next
-bindgesture swipe:left workspace prev
+#bindgesture swipe:right workspace next
+#bindgesture swipe:left workspace prev
     
 # Allow container movements by pinching them
-bindgesture pinch:inward+up move up
-bindgesture pinch:inward+down move down
-bindgesture pinch:inward+left move left
-bindgesture pinch:inward+right move right
+#bindgesture pinch:inward+up move up
+#bindgesture pinch:inward+down move down
+#bindgesture pinch:inward+left move left
+#bindgesture pinch:inward+right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
