@@ -1,14 +1,14 @@
 if [[ -z $DISPLAY && $(tty) == /dev/tty1 && $XDG_SESSION_TYPE == tty ]]; then
     # Lade die Bootparameter in den Variablen
-    for wort in $(cat /proc/cmdline)
-    do
-        echo "Parameter ${wort%=*} = ${wort#*=}"
-        if ! export ${wort%=*}=${wort#*=}; then echo "cannot export ${wort}!!!"; fi
-    done
+    #for wort in $(cat /proc/cmdline)
+    #do
+    #    echo "Parameter ${wort%=*} = ${wort#*=}"
+    #    if ! export ${wort%=*}=${wort#*=}; then echo "cannot export ${wort}!!!"; fi
+    #done
 
     # set systemconfiguration
-    echo "set systemconfiguration"
-    sudo scripts/set-systemsettings.sh
+    #echo "set systemconfiguration"
+    #sudo scripts/set-systemsettings.sh
 
     # First make sure dbus is started
     if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then

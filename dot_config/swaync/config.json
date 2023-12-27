@@ -29,14 +29,14 @@
   "hide-on-action": true,
   "script-fail-notify": true,
   "scripts": {
-    "dialog-script": {
-      "exec": "mpv /usr/share/sounds/freedesktop/stereo/dialog-information.oga",
-      "urgency": "Normal"
-    },
-    "dialog-critical-script": {
-      "exec": "mpv /usr/share/sounds/freedesktop/stereo/dialog-error.oga",
-      "urgency": "Critical"
-    },
+    #"dialog-script": {
+    #  "exec": "mpv /usr/share/sounds/freedesktop/stereo/dialog-information.oga",
+    #  "urgency": "Normal"
+    #},
+    #"dialog-critical-script": {
+    #  "exec": "mpv /usr/share/sounds/freedesktop/stereo/dialog-error.oga",
+    #  "urgency": "Critical"
+    #},
     "example-action-script": {
       "exec": "echo 'Do something actionable!'",
       "urgency": "Normal",

@@ -11,7 +11,7 @@ exec blueman-applet
 exec swaync
 
 # authentication manager https://wiki.archlinux.org/title/Polkit
-exec /usr/bin/lxqt-policykit-agent
+exec /usr/bin/lxpolkit
 
 # Clipboard Manager
 exec wl-paste -t text --watch clipman store
