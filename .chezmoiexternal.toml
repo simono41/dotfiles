@@ -15,3 +15,8 @@
     url = "https://github.com/junegunn/fzf/archive/master.tar.gz"
     exact = true
     stripComponents = 1
+[".config/nvim"]
+    type = "archive"
+    url = "https://github.com/AstroNvim/AstroNvim/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
