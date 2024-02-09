@@ -18,7 +18,7 @@ brew install tmux
 brew install reattach-to-user-namespace
 brew install starship
 brew install zsh-completions
-brew install zsh-autosuggestion
+brew install zsh-autosuggestions
 brew install zsh-autocomplete
 brew install fzf
 brew install ruby
