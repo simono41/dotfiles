@@ -130,6 +130,6 @@ eval "$(starship init zsh)"
 
 test -e "$HOME/.shellfishrc" && source "$HOME/.shellfishrc"
 
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ] && [ -n "${WEZTERM_CONFIG_DIR}" ]; then
     exec tmux new-session -A -s ${USER} >/dev/null 2>&1
 fi
