@@ -82,6 +82,6 @@ while true; do
 
     echo "Farbe erfolgreich gesendet!"
 
-    sleep 1
+    sleep 3
 
 done
