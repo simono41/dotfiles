@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#set -ex
+set -ex
 
 while true; do
 
@@ -30,23 +30,54 @@ while true; do
     average_color=$(convert $screenshot_path -resize 1x1\! -format "%[pixel:u]" info:- | tr -d ' ' | sed 's/.*[(]\(.*\)[)].*/\1/' | tr -d '%')
     IFS=',' read r g b _ <<< "$average_color"
 
-    # Konvertiere Fließkommazahlen zu Ganzzahlen mit awk
-    r=$(echo $r | awk '{printf "%.0f", $1}')
-    g=$(echo $g | awk '{printf "%.0f", $1}')
-    b=$(echo $b | awk '{printf "%.0f", $1}')
+    # Konvertiere RGB in xy-Werte
+    convertRGBtoXY() {
+        # Konvertiere die Eingabewerte von 0-255 zu 0-1
+        local r=$(echo "$1 / 255" | bc -l)
+        local g=$(echo "$2 / 255" | bc -l)
+        local b=$(echo "$3 / 255" | bc -l)
 
-    # Einfache Umrechnung der RGB-Werte für die Hue API (diese Werte sind stark angenähert)
-    hue=$((r * 65535 / 255))
-    saturation=$((g * 254 / 255))
-    brightness=$((b * 254 / 255))
+        # Anpassen der Helligkeit der Farben gemäß der Formel
+        adjustColor() {
+            local color=$1
+            if (( $(echo "$color <= 0.04045" | bc -l) )); then
+                echo $(echo "$color / 12.92" | bc -l)
+            else
+                echo $(echo "e(l(($color + 0.055) / 1.055) * 2.4)" | bc -l)
+            fi
+        }
+
+        r=$(adjustColor $r)
+        g=$(adjustColor $g)
+        b=$(adjustColor $b)
+
+        # Konvertierung zu XYZ
+        local X=$(echo "scale=5; (0.4124 * $r) + (0.3576 * $g) + (0.1805 * $b)" | bc -l)
+        local Y=$(echo "scale=5; (0.2126 * $r) + (0.7152 * $g) + (0.0722 * $b)" | bc -l)
+        local Z=$(echo "scale=5; (0.0193 * $r) + (0.1192 * $g) + (0.9505 * $b)" | bc -l)
+
+        # Konvertierung zu xy
+        local x=$(echo "scale=5; $X / ($X + $Y + $Z)" | bc -l)
+        local y=$(echo "scale=5; $Y / ($X + $Y + $Z)" | bc -l)
+
+        # Ausgabe der xy-Werte
+        echo "0$x 0$y"
+    }
+
+    # Ausführen der Konvertierung
+    read x y <<< $(convertRGBtoXY $r $g $b)
+
+    # Setze Helligkeit und Sättigung (Beispielwerte, anpassen nach Bedarf)
+    bri=254 # Maximalwert für die Helligkeit
+    sat=254 # Maximalwert für die Sättigung
 
     # 4. Farbe an Philips Hue Lampe senden
-    echo "Senden der Farbe Hue: $hue, Saturation: $saturation, Brightness: $brightness an Lampe $light_id"
+    echo "Senden der Farbe an Lampe $light_id: xy-Werte: $x,$y, Helligkeit: $bri, Sättigung: $sat"
 
-    # Hier würde der tatsächliche Befehl zum Senden der Farbe stehen.
     url="http://${bridge_ip}/api/${username}/lights/${light_id}/state"
-    payload="{\"on\": true, \"sat\": $saturation, \"bri\": $brightness, \"hue\": $hue}"
-    response=$(curl --request PUT --data "$payload" $url)
+    #payload="{\"on\": true, \"xy\": [$x, $y], \"bri\": $bri, \"sat\": $sat}"
+    payload="{\"on\": true, \"xy\": [$x, $y]}"
+    response=$(curl --request PUT --header "Content-Type: application/json" --data "$payload" $url)
     echo $response
 
     echo "Farbe erfolgreich gesendet!"
