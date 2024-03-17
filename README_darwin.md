@@ -78,9 +78,15 @@ brew install --cask font-fira-code
 brew install --cask font-finagler
 ~~~
 
-## Install some Tools for Jetrains
+## Install some Tools for Jetbrains
 ~~~
 brew install kdoctor
 brew install cocoapods
+~~~
+
+## Install other optional tools
+~~~
+brew install --cask visual-studio-code
+brew install --cask --no-quarantine prismlauncher
 ~~~
 
