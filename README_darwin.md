@@ -13,6 +13,7 @@ chezmoi init -v --apply ssh://git@brothertec.eu:1023/simono41/dotfiles.git
 
 ## Install some Terminal Tools
 ~~~
+brew install --cask wezterm
 brew install neovim
 brew install tmux
 brew install reattach-to-user-namespace
