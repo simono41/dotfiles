@@ -44,7 +44,9 @@ https://addons.mozilla.org/de/firefox/addon/browserpass-ce/?utm_source=addons.mo
 
 add the kde-autostart.sh script in scripts folder to the autostart in the plasma settings.
 
-add fuzzel for showing programs and .config/fuzzel/fuzzel-pass.sh for showing passwords and .config/fuzzel/fuzzel-clipman.sh for showing clipboards to the shourtcuts in the plasma settings
+add fuzzel for showing programs
+and .config/fuzzel/fuzzel-pass.sh (with bash -c ".config/fuzzel/fuzzel-pass.sh") for showing passwords
+and .config/fuzzel/fuzzel-clipman.sh (with bash -c ".config/fuzzel/fuzzel-clipman.sh") for showing clipboards to the shourtcuts in the plasma settings
 
 ## tmux helping
 
