@@ -43,7 +43,7 @@ https://addons.mozilla.org/de/firefox/addon/browserpass-ce/?utm_source=addons.mo
 ## Install Shortcuts in Plasma
 
 ~~~
-sudo dnf install papirus-icon-theme ripgrep
+sudo dnf install papirus-icon-theme ripgrep fuzzel
 ~~~
 
 add the kde-autostart.sh script in scripts folder to the autostart in the plasma settings.
