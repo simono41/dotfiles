@@ -40,6 +40,14 @@ and install this plugin in firefox
 https://addons.mozilla.org/de/firefox/addon/browserpass-ce/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search
 ~~~
 
+## Install Shortcuts in Plasma
+
+add the kde-autostart.sh script in scripts folder to the autostart in the plasma settings.
+
+add fuzzel for showing programs and .config/fuzzel/fuzzel-pass.sh for showing passwords and .config/fuzzel/fuzzel-clipman.sh for showing clipboards to the shourtcuts in the plasma settings
+
+## tmux helping
+
 ~~~
 <prefix> means you have to either hit Ctrl + a or Ctrl + b
 <prefix> c means you have to hit Ctrl + a or Ctrl + b followed by c
