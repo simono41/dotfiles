@@ -1,5 +1,7 @@
 # For Install this Dotfiles on Fedora
 
+## Dotfiles
+
 ~~~
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
@@ -20,6 +22,38 @@ chezmoi init -v --apply --force https://code.brothertec.eu/simono41/dotfiles.git
 chezmoi update -v --force
 ~~~
 
+## Install Browserpass
+
+~~~
+sudo dnf install go
+
+git clone https://github.com/browserpass/browserpass-native.git
+
+cd browserpass-native
+
+make configure
+sudo make hosts-firefox-user 
+sudo make install
+
+and install this plugin in firefox
+
+https://addons.mozilla.org/de/firefox/addon/browserpass-ce/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search
+~~~
+
+~~~
+<prefix> means you have to either hit Ctrl + a or Ctrl + b
+<prefix> c means you have to hit Ctrl + a or Ctrl + b followed by c
+<prefix> C-c means you have to hit Ctrl + a or Ctrl + b followed by Ctrl + c
+~~~
+
+https://gist.github.com/rbudiharso/53821b3222c4e7a5f7695d8d13cc6058
+
+For Install new tmux addons run this
+
+~~~
+TMUX_PLUGIN_MANAGER_PATH=~/.tmux/plugins .tmux/plugins/tpm/scripts/install_plugins.sh
+~~~
+
 ## Sources
 
 https://wezfurlong.org/wezterm/install/linux.html#installing-on-linux-via-flathub
@@ -35,17 +69,3 @@ https://starship.rs/guide/#%F0%9F%9A%80-installation
 https://www.nerdfonts.com/font-downloads
 
 https://github.com/gpakosz/.tmux
-
-~~~
-<prefix> means you have to either hit Ctrl + a or Ctrl + b
-<prefix> c means you have to hit Ctrl + a or Ctrl + b followed by c
-<prefix> C-c means you have to hit Ctrl + a or Ctrl + b followed by Ctrl + c
-~~~
-
-https://gist.github.com/rbudiharso/53821b3222c4e7a5f7695d8d13cc6058
-
-For Install new tmux addons run this
-
-~~~
-TMUX_PLUGIN_MANAGER_PATH=~/.tmux/plugins .tmux/plugins/tpm/scripts/install_plugins.sh
-~~~
