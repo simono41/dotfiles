@@ -1,10 +1,38 @@
-# For Install this Dotfiles
+# For Install this Dotfiles on Fedora
 
 ~~~
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
+flatpak install flathub org.wezfurlong.wezterm
+
+flatpak run org.wezfurlong.wezterm
+
+alias wezterm='flatpak run org.wezfurlong.wezterm'
+
+sudo usermod -s /bin/zsh simono41
+
+curl -sS https://starship.rs/install.sh | sh
+
+dnf install jetbrains-mono-fonts tmux
+
 sh -c "$(curl -fsLS get.chezmoi.io)"
 chezmoi init -v --apply --force https://code.brothertec.eu/simono41/dotfiles.git
 chezmoi update -v --force
 ~~~
+
+## Sources
+
+https://wezfurlong.org/wezterm/install/linux.html#installing-on-linux-via-flathub
+
+https://flatpak.org/setup/Fedora
+
+https://www.chezmoi.io/install/#one-line-binary-install
+
+https://wiki.ubuntuusers.de/usermod/
+
+https://starship.rs/guide/#%F0%9F%9A%80-installation
+
+https://www.nerdfonts.com/font-downloads
 
 https://github.com/gpakosz/.tmux
 
