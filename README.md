@@ -49,8 +49,8 @@ sudo dnf install papirus-icon-theme ripgrep fuzzel
 add the kde-autostart.sh script in scripts folder to the autostart in the plasma settings.
 
 add fuzzel for showing programs
-and .config/fuzzel/fuzzel-pass.sh (with bash -c ".config/fuzzel/fuzzel-pass.sh") for showing passwords
-and .config/fuzzel/fuzzel-clipman.sh (with bash -c ".config/fuzzel/fuzzel-clipman.sh") for showing clipboards to the shourtcuts in the plasma settings
+and .config/fuzzel/fuzzel-pass.sh (with ~/.config/fuzzel/fuzzel-pass.sh >> /home/simono41/password-store.log) for showing passwords
+and instead of using that .config/fuzzel/fuzzel-clipman.sh (with clipman alternative clipman pick --tool=CUSTOM --tool-args="fuzzel -d") for showing clipboards to the shourtcuts in the plasma settings
 
 ## tmux helping
 
