@@ -28,6 +28,7 @@ brew install htop
 brew install btop
 brew install asciiquarium
 brew install lolcat
+brew install openjdk@17
 brew install python
 brew install python-tk@3.11
 brew install python-gdbm@3.11
