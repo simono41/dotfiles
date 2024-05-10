@@ -30,6 +30,8 @@ brew install asciiquarium
 brew install lolcat
 brew install openjdk@17
 sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
+brew install openjdk@21
+sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 brew install python
 brew install python-tk@3.11
 brew install python-gdbm@3.11
