@@ -31,7 +31,7 @@ brew install lolcat
 brew install python
 brew install python-tk@3.11
 brew install python-gdbm@3.11
-pip install pyobjc
+pip3 install pyobjc
 ~~~
 
 ## Install Password Manager
