@@ -4,4 +4,4 @@ set -x
 
 wl-paste -t text --watch clipman store &
 
-~/scripts/phillips_hue-sync.sh &
+#~/scripts/phillips_hue-sync.sh &
