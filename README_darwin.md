@@ -77,6 +77,10 @@ brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs -I{} brew install
 brew install --cask font-hack-nerd-font
 brew install --cask font-fira-code
 brew install --cask font-finagler
+
+or only for Jetbrains mono nerd fonts
+
+brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font
 ~~~
 
 ## Install some Tools for Jetbrains
