@@ -114,17 +114,16 @@ function preexec {
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin"
 
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.fzf/shell/key-bindings.zsh
-alias wezterm='flatpak run org.wezfurlong.wezterm'
 
 export EDITOR=vim
 
 alias wezterm='flatpak run org.wezfurlong.wezterm'
+
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
 
 eval "$(starship init zsh)"
 
