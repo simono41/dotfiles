@@ -4,6 +4,8 @@
 #         without any warranty.
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
+# verhindern, dass das Terminal nach unten scrollt, wenn man Text markiert und in die Zwischenablage kopiert
+bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-selection-no-clear
 
 # -- bindings ------------------------------------------------------------------
 
