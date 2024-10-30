@@ -15,7 +15,7 @@ sudo usermod -s /bin/zsh simono41
 
 curl -sS https://starship.rs/install.sh | sh
 
-dnf install jetbrains-mono-fonts tmux perl-Time-HiRes
+dnf install jetbrains-mono-fonts tmux perl-Time-HiRes rbw
 
 sh -c "$(curl -fsLS get.chezmoi.io)"
 chezmoi init -v --apply --force https://code.brothertec.eu/simono41/dotfiles.git
