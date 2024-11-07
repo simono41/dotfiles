@@ -4,4 +4,4 @@
 
 pass_name=$(rbw list | fuzzel -d)
 
-[[ $pass_name != "" ]] && rbw get "$pass_name" --clipboard
+[[ $pass_name != "" ]] && rbw get "$pass_name" | wl-copy
