@@ -49,22 +49,6 @@ brew install browserpass
 PREFIX='/opt/homebrew/opt/browserpass' make hosts-firefox-user -f '/opt/homebrew/opt/browserpass/lib/browserpass/Makefile'
 change gpg path in firefox to /opt/homebrew/bin/gpg
 ~~~
-## For Update Password Manager
-~~~
-brew upgrade --build-from-source browserpass
-~~~
-
-## Install Tiny Window Manager
-~~~
-brew install koekeishiya/formulae/yabai
-If you are using the scripting-addition; remember to update your sudoers file:
-  sudo visudo -f /private/etc/sudoers.d/yabai
-
-Build the configuration row by running:
-  echo "$(whoami) ALL=(root) NOPASSWD: sha256:$(shasum -a 256 $(which yabai) | cut -d " " -f 1) $(which yabai) --load-sa
-
-brew install koekeishiya/formulae/skhd
-~~~
 
 ## Install Clipboard Manager
 ~~~
@@ -72,6 +56,13 @@ brew install jq
 brew install choose-gui
 brew install rg
 brew install --cask flycut
+~~~
+
+## Install Tailscale
+~~~
+brew install tailscale
+sudo tailscaled install-system-daemon
+tailscale up --login-server=https://vpn.brothertec.eu --ssh --accept-routes
 ~~~
 
 ## Install Fonts
