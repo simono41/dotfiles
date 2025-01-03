@@ -1,15 +1,22 @@
 #!/bin/bash
 
+# Funktion zur Auswahl mit fuzzel oder choose
+select_item() {
+    local prompt="$1"
+    local input="$2"
+    if [[ "$OSTYPE" == "darwin"* ]]; then
+        echo "$input" | choose -p "$prompt"
+    else
+        echo "$input" | fuzzel -d -p "$prompt"
+    fi
+}
+
 # Funktion zum Bereinigen des ausgewählten Textes
 clean_text() {
     local text="$1"
-    
-    # Prüfe, ob der Text einen Doppelpunkt gefolgt von einem Leerzeichen enthält
     if [[ "$text" == *": "* ]]; then
-        # Entferne alles bis zum ersten Doppelpunkt und das folgende Leerzeichen
         echo "$text" | sed 's/^[^:]*: //'
     else
-        # Wenn kein Doppelpunkt mit folgendem Leerzeichen gefunden wird, gib den Text unverändert zurück
         echo "$text"
     fi
 }
@@ -25,15 +32,15 @@ copy_to_clipboard() {
 }
 
 # Wähle einen Eintrag aus der Liste
-pass_name=$(rbw list | fuzzel -d)
+pass_name=$(select_item "Wähle einen Eintrag:" "$(rbw list)")
 
 # Wenn ein Eintrag ausgewählt wurde
 if [[ $pass_name != "" ]]; then
     # Hole alle Details des Eintrags
     details=$(rbw get "$pass_name" --full)
     
-    # Zeige Details in einem neuen Fuzzel-Fenster an und lasse den Benutzer eine Zeile auswählen
-    selected_detail=$(echo "$details" | fuzzel --dmenu --prompt="Details für $pass_name: ")
+    # Zeige Details an und lasse den Benutzer eine Zeile auswählen
+    selected_detail=$(select_item "Details für $pass_name:" "$details")
 
     # Wenn eine Zeile ausgewählt wurde
     if [[ $selected_detail != "" ]]; then
