@@ -114,7 +114,7 @@ transfer()
 
     if [[ "${file_array[@]}" == "" || "${1}" == "--help" || "${1}" == "-h" ]]
     then
-        echo "${0} - Upload arbitrary files to \"transfer.sh\"."
+        echo "${0} - Upload arbitrary files to \"transfer.brothertec.eu\"."
         echo ""
         echo "Usage: ${0} [options] [<file>]..."
         echo ""
@@ -138,8 +138,8 @@ transfer()
         echo "  Upload a single file from the current working directory and filter out the delete token and download link:"
         echo "      ${0} \"image.img\" | awk --field-separator=\": \" '/Delete token:/ { print \$2 } /Download link:/ { print \$2 }'"
         echo ""
-        echo "  Show help text from \"transfer.sh\":"
-        echo "      curl --request GET \"https://transfer.sh\""
+        echo "  Show help text from \"transfer.brothertec.eu\":"
+        echo "      curl --request GET \"https://transfer.brothertec.eu\""
         return 0
     else
         for file in "${file_array[@]}"
@@ -161,10 +161,10 @@ transfer()
     # be compatible with "bash"
     if [[ "${ZSH_NAME}" == "zsh" ]]
     then
-        read $'upload_files?\e[01;31mDo you really want to upload the above files ('"${#file_array[@]}"$') to "transfer.sh"? (Y/n): \e[0m'
+        read $'upload_files?\e[01;31mDo you really want to upload the above files ('"${#file_array[@]}"$') to "transfer.brothertec.eu"? (Y/n): \e[0m'
     elif [[ "${BASH}" == *"bash"* ]]
     then
-        read -p $'\e[01;31mDo you really want to upload the above files ('"${#file_array[@]}"$') to "transfer.sh"? (Y/n): \e[0m' upload_files
+        read -p $'\e[01;31mDo you really want to upload the above files ('"${#file_array[@]}"$') to "transfer.brothertec.eu"? (Y/n): \e[0m' upload_files
     fi
 
     case "${upload_files:-y}" in
@@ -180,7 +180,7 @@ transfer()
                 # if "stdout" is redirected to something; e.g. ">/dev/null", "tee /dev/null" or "| <some_command>".
                 # the response header is redirected to "stdout", so redirecting "stdout" to "/dev/null" does not make any sense.
                 # redirecting "curl's" "stderr" to "stdout" ("2>&1") will suppress the progress bar.
-                curl_output=$(curl --request PUT --progress-bar --dump-header - --upload-file "${file}" "https://transfer.sh/")
+                curl_output=$(curl --request PUT --progress-bar --dump-header - --upload-file "${file}" "https://transfer.brothertec.eu/")
                 awk_output=$(awk \
                     'gsub("\r", "", $0) && tolower($1) ~ /x-url-delete/ \
                     {
