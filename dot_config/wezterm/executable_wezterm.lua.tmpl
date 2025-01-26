@@ -47,6 +47,11 @@ return {
 --    },
     { key = "/", mods = "SHIFT|ALT", action = wezterm.action({ SendString = "\\" }) },
     {
+        key = '7',
+        mods = 'ALT',
+        action = wezterm.action.SendString('|'),
+    },    
+    {
       key = 't',
       mods = 'CTRL|SHIFT',
       action = wezterm.action.SpawnCommandInNewTab {
