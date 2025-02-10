@@ -31,25 +31,31 @@ copy_to_clipboard() {
     fi
 }
 
-# Wähle einen Eintrag aus der Liste
-pass_name=$(select_item "Wähle einen Eintrag:" "$(rbw list)")
+# Liste mit Name+User kombinieren und formatieren
+entries=$(rbw list --fields name,user | awk -F'\t' '{print $1 " | " $2}')
 
-# Wenn ein Eintrag ausgewählt wurde
-if [[ $pass_name != "" ]]; then
-    # Hole alle Details des Eintrags
-    details=$(rbw get "$pass_name" --full)
+# Auswahl des kombinierten Eintrags
+selected=$(select_item "Wähle einen Login: " "$entries")
+
+if [[ -n "$selected" ]]; then
+    # Extrahiere Name und User aus der Auswahl
+    name=$(echo "$selected" | awk -F' \\| ' '{print $1}')
+    user=$(echo "$selected" | awk -F' \\| ' '{print $2}')
     
-    # Zeige Details an und lasse den Benutzer eine Zeile auswählen
-    selected_detail=$(select_item "Details für $pass_name:" "$details")
+    # Hole Details mit beiden Parametern
+    details=$(rbw get "$name" "$user" --full 2>/dev/null)
 
-    # Wenn eine Zeile ausgewählt wurde
-    if [[ $selected_detail != "" ]]; then
-        # Bereinige den ausgewählten Text
+    if [[ -z "$details" ]]; then
+        echo "Fehler beim Abrufen der Details"
+        exit 1
+    fi
+
+    # Detailauswahl wie bisher
+    selected_detail=$(select_item "Details für $name: " "$details")
+    
+    if [[ -n "$selected_detail" ]]; then
         cleaned_text=$(clean_text "$selected_detail")
-        
-        # Kopiere den bereinigten Text in die Zwischenablage
         copy_to_clipboard "$cleaned_text"
-        
-        echo "Bereinigter Text wurde in die Zwischenablage kopiert."
+        echo "In Zwischenablage kopiert: ${cleaned_text:0:20}..."
     fi
 fi
