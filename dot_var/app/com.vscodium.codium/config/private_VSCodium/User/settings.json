@@ -1,0 +1,19 @@
+{
+    "redhat.telemetry.enabled": true,
+    "git.enableSmartCommit": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "markdown-preview-enhanced.enablePreviewZenMode": false,
+    "markdown-preview-enhanced.mathInlineDelimiters": [
+
+        [
+            "$",
+            "$"
+        ],
+        [
+            "\\(",
+            "\\)"
+        ]
+    ],
+    "markmap.defaultOptions": "{\n\t\"colorFreezeLevel\": 3,\n\t\"maxWidth\": 300,\n\t\"initialExpandLevel\": 3\n}"
+}
