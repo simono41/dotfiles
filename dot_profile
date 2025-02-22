@@ -1,3 +1,6 @@
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
 # First make sure dbus is started
 
 if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; then
