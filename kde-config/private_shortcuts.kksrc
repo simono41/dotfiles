@@ -1,0 +1,20 @@
+[Custom Commands][fuzzel.desktop]
+Exec=fuzzel
+Name=fuzzel
+
+[Custom Commands][net.local.fuzzel-klipper.sh.desktop]
+Exec=/home/simono41/.config/fuzzel/fuzzel-klipper.sh
+Name=fuzzel-klipper
+
+[Custom Commands][net.local.fuzzel-rbw.sh-2.desktop]
+Exec=~/.config/fuzzel/fuzzel-rbw.sh
+Name=
+
+[fuzzel.desktop][Global Shortcuts]
+_launch=Alt+D
+
+[net.local.fuzzel-klipper.sh.desktop][Global Shortcuts]
+_launch=Alt+Y
+
+[net.local.fuzzel-rbw.sh-2.desktop][Global Shortcuts]
+_launch=Alt+Shift+Y
