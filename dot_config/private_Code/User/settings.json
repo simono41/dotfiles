@@ -1,0 +1,18 @@
+{
+    "git.autofetch": true,
+    "redhat.telemetry.enabled": true,
+    "git.enableSmartCommit": true,
+    "markmap.defaultOptions": "{\n  \"colorFreezeLevel\": 2,\n  \"maxWidth\": 300,\n  \"initialExpandLevel\": 3\n}",
+    "git.confirmSync": false,
+    "markdown-preview-enhanced.pandocArguments": [
+        "-s",
+        "-f", "markdown",
+        "-t", "html5",
+        "--embed-resources",
+        "--standalone",
+        "${fileDirname}/${fileBasename}",
+        "-o", "${fileDirname}/${fileBasenameNoExtension}.html"
+    ],
+    "pandoc.htmlOptString": "-s -f markdown -t html5 --embed-resources --standalone",
+    "markdown.extension.toc.orderedList": true
+}
