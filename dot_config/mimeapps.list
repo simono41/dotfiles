@@ -22,6 +22,8 @@ application/rss+xml=userapp-Thunderbird-4BW691.desktop;
 application/x-extension-rss=userapp-Thunderbird-4BW691.desktop;
 x-scheme-handler/webcal=userapp-Thunderbird-6HQ691.desktop;
 x-scheme-handler/webcals=userapp-Thunderbird-6HQ691.desktop;
+x-scheme-handler/jetbrains=jetbrains-toolbox.desktop;
+text/plain=code.desktop
 
 [Default Applications]
 text/html=firefox.desktop
@@ -51,3 +53,4 @@ text/calendar=userapp-Thunderbird-6HQ691.desktop
 application/x-extension-ics=userapp-Thunderbird-6HQ691.desktop
 x-scheme-handler/webcals=userapp-Thunderbird-6HQ691.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
+text/plain=code.desktop

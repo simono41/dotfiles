@@ -26,3 +26,8 @@ exec-once = waybar & hyprpaper & firefox
 exec-once = wl-paste --type text --watch cliphist store # Stores only text data
 
 exec-once = wl-paste --type image --watch cliphist store # Stores only image data
+
+# machine-specific configuration
+{{- if eq .chezmoi.hostname "sri-laptop-fedora" }}
+exec-once = flatpak run com.github.IsmaelMartinez.teams_for_linux
+{{- end }}
