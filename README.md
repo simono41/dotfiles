@@ -20,37 +20,9 @@ dnf install jetbrains-mono-fonts tmux perl-Time-HiRes rbw
 sh -c "$(curl -fsLS get.chezmoi.io)"
 chezmoi init -v --apply --force https://code.brothertec.eu/simono41/dotfiles.git
 chezmoi update -v --force
+
+sudo dnf install fzf zsh-autosuggestions zsh-syntax-highlighting fuzzel papirus-icon-theme rg dkms libdrm-devel htop hplip wtype ydotool pkg-config libxkbcommon-devel scdoc golang inotify-tools docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin vlc vlc-plugin-gstreamer vlc-plugin-pipewire vlc-libs vlc-plugin-ffmpeg ffmpeg ffmpeg-free code gstreamer1-libav gstreamer1-vaapi gstreamer1-plugins-good gstreamer1-plugins-good-extras go libgo-devel net-snmp-utils ncdu yad nvim neovim python3-neovim pwgen pass-otp gopass gopass-jsonapi ansible net-snmp snmpd grim openldap-devel gcc python3-psycopg2 python3-postgresql zbar openh264 mumble kmplayer kernel virt-manager @virtualization gource virt-what links sway nm-applet blueman-applet swaync lxpolkit wob wcp wdisplays hyprland golang gtk3-devel golang-x-tools-toolstash golang-x-arch-devel.noarch waybar pavucontrol-qt wofi pavucontrol arc-theme hyprlock copyq nwg-dock-hyprland nwg-drawer nwg-panel nwg-launchers cascadia-code-nf-fonts hyprpaper btop atop nmap ICAClient perl-Time-HiRes powerline-fonts tmux-powerline asciiquarium lolcat socat rbw
 ~~~
-
-## Install Browserpass
-
-~~~
-sudo dnf install go
-
-git clone https://github.com/browserpass/browserpass-native.git
-
-cd browserpass-native
-
-make configure
-sudo make hosts-firefox-user 
-sudo make install
-
-and install this plugin in firefox
-
-https://addons.mozilla.org/de/firefox/addon/browserpass-ce/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search
-~~~
-
-## Install Shortcuts in Plasma
-
-~~~
-sudo dnf install papirus-icon-theme ripgrep fuzzel
-~~~
-
-add the kde-autostart.sh script in scripts folder to the autostart in the plasma settings.
-
-add fuzzel for showing programs
-and .config/fuzzel/fuzzel-pass.sh (with ~/.config/fuzzel/fuzzel-pass.sh >> /home/simono41/password-store.log) for showing passwords
-and instead of using that .config/fuzzel/fuzzel-clipman.sh (with clipman alternative clipman pick --tool=CUSTOM --tool-args="fuzzel -d") for showing clipboards to the shourtcuts in the plasma settings
 
 ## tmux helping
 
