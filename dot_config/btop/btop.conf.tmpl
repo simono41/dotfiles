@@ -2,7 +2,14 @@
 
 #* Name of a btop++/bpytop/bashtop formatted ".theme" file, "Default" and "TTY" for builtin themes.
 #* Themes should be placed in "../share/btop/themes" relative to binary or "$HOME/.config/btop/themes"
+
+{{ if eq .chezmoi.os "darwin" -}}
+# macOS contents
+color_theme = "/opt/homebrew/Cellar/btop/1.2.13/share/btop/themes/flat-remix.theme"
+{{ else if eq .chezmoi.os "linux" -}}
+# Linux contents
 color_theme = "/usr/share/btop/themes/flat-remix.theme"
+{{ end -}}
 
 #* If the theme set background should be shown, set to False if you want terminal background transparency.
 theme_background = True
