@@ -6,7 +6,7 @@
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
-sudo dnf install fzf zsh-autosuggestions zsh-syntax-highlighting fuzzel papirus-icon-theme rg dkms libdrm-devel htop hplip wtype ydotool pkg-config libxkbcommon-devel scdoc golang inotify-tools docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin vlc vlc-plugin-gstreamer vlc-plugin-pipewire vlc-libs vlc-plugin-ffmpeg ffmpeg ffmpeg-free gstreamer1-libav gstreamer1-vaapi gstreamer1-plugins-good gstreamer1-plugins-good-extras go libgo-devel net-snmp-utils ncdu yad nvim neovim python3-neovim pwgen pass-otp gopass gopass-jsonapi ansible net-snmp snmpd grim openldap-devel gcc python3-psycopg2 python3-postgresql zbar openh264 mumble kmplayer kernel virt-manager @virtualization gource virt-what links sway nm-applet blueman-applet swaync lxpolkit wob wcp wdisplays hyprland hypridle golang gtk3-devel golang-x-tools-toolstash golang-x-arch-devel.noarch waybar pavucontrol-qt wofi pavucontrol arc-theme hyprlock copyq nwg-dock-hyprland nwg-drawer nwg-panel nwg-launchers cascadia-code-nf-fonts hyprpaper btop atop nmap perl-Time-HiRes powerline-fonts tmux-powerline asciiquarium lolcat socat rbw pcmanfm qalculate-gtk jetbrains-mono-fonts
+sudo dnf install fzf zsh-autosuggestions zsh-syntax-highlighting fuzzel papirus-icon-theme rg dkms libdrm-devel htop hplip wtype ydotool pkg-config libxkbcommon-devel scdoc golang inotify-tools docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin vlc vlc-plugin-gstreamer vlc-plugin-pipewire vlc-libs vlc-plugin-ffmpeg ffmpeg ffmpeg-free gstreamer1-libav gstreamer1-vaapi gstreamer1-plugins-good gstreamer1-plugins-good-extras go libgo-devel net-snmp-utils ncdu yad nvim neovim python3-neovim pwgen pass-otp gopass gopass-jsonapi ansible net-snmp snmpd grim openldap-devel gcc python3-psycopg2 python3-postgresql zbar openh264 mumble kmplayer virt-manager @virtualization gource virt-what links sway nm-applet blueman-applet swaync lxpolkit wob wcp wdisplays hyprland hypridle golang gtk3-devel golang-x-tools-toolstash golang-x-arch-devel.noarch waybar pavucontrol-qt wofi pavucontrol arc-theme hyprlock copyq nwg-dock-hyprland nwg-drawer nwg-panel nwg-launchers cascadia-code-nf-fonts hyprpaper btop atop nmap perl-Time-HiRes powerline-fonts tmux-powerline asciiquarium lolcat socat rbw pcmanfm qalculate-gtk jetbrains-mono-fonts la-capitaine-cursor-theme la-capitaine-icon-theme
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
@@ -17,6 +17,9 @@ chezmoi init -v --apply --force https://code.brothertec.eu/simono41/dotfiles.git
 chezmoi update -v --force
 
 curl -sS https://starship.rs/install.sh | sh
+
+sudo wget https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-arm -o /usr/bin/cliphist
+sudo chmod +x /usr/bin/cliphist
 ~~~
 
 ## tmux helping

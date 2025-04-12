@@ -7,7 +7,7 @@ handle_windowtitlev2 () {
   windowtitle=${1#*,}
 
   case $windowtitle in
-    *"(Bitwarden"*"manager) - Bitwarden"*)
+    *"(Bitwarden"*"anager) - Bitwarden"*)
       hyprctl --batch \
         "dispatch togglefloating address:0x$windowaddress;"\
         "dispatch resizewindowpixel exact 20% 54%,address:0x$windowaddress;"\
