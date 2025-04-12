@@ -54,6 +54,7 @@ sudo dnf install -y \
 
 # Flatpak Setup
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub com.vscodium.codium
 
 # Systemkonfiguration
 sudo usermod -s /bin/zsh simono41
@@ -85,3 +86,29 @@ if [[ ! -f /usr/bin/cliphist ]]; then
 else
   echo "cliphist ist bereits installiert, überspringe Download"
 fi
+
+# Spotify Player mit Prüfung
+if [[ ! -f /usr/bin/spotify_player ]]; then
+  # Architektur ermitteln
+  ARCH=$(uname -m)
+  if [ "$ARCH" = "aarch64" ]; then
+    URL="https://github.com/aome510/spotify-player/releases/download/v0.20.4/spotify_player-aarch64-unknown-linux-gnu.tar.gz"
+  elif [ "$ARCH" = "x86_64" ]; then
+    URL="https://github.com/aome510/spotify-player/releases/download/v0.20.4/spotify_player-x86_64-unknown-linux-gnu.tar.gz"
+  else
+    echo "Nicht unterstützte Architektur: $ARCH"
+    exit 1
+  fi
+
+  # Herunterladen und Entpacken
+  echo "Lade spotify_player von $URL herunter..."
+  curl -L "$URL" | tar -xz -C /tmp || { echo "Fehler beim Herunterladen oder Entpacken"; exit 1; }
+
+  # Datei verschieben und ausführbar machen
+  sudo mv /tmp/spotify_player /usr/bin/spotify_player
+  sudo chmod +x /usr/bin/spotify_player
+  echo "spotify_player wurde auf dem System installiert"
+else
+  echo "spotify_player ist bereits installiert, überspringe Download"
+fi
+
