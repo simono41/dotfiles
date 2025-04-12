@@ -55,6 +55,8 @@ sudo dnf install -y \
 # Flatpak Setup
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.vscodium.codium
+flatpak install com.github.KRTirtho.Spotube
+flatpak install flathub org.prismlauncher.PrismLauncher
 
 # Systemkonfiguration
 sudo usermod -s /bin/zsh simono41
@@ -86,12 +88,3 @@ if [[ ! -f /usr/bin/cliphist ]]; then
 else
   echo "cliphist ist bereits installiert, überspringe Download"
 fi
-
-# Homebrew mit Prüfung
-if ! command -v brew &>/dev/null; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
-  echo "Homebrew ist bereits installiert, überspringe Installation"
-fi
-brew install spotify_player
-
