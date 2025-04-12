@@ -8,9 +8,14 @@ if [[ "$(uname -s)" != "Linux" || "$(uname -m)" != "aarch64" ]]; then
 fi
 
 echo "Ändere Apple Funktionstaste mit der Kontrolltaste!!!"
+echo "Ändere Apple Commandtaste mit der Altasten!!!"
 
 # Temporäre Änderung
+# Command (⌘) und Alt (⌥) tauschen
+echo 1 | sudo tee /sys/module/hid_apple/parameters/swap_opt_cmd
+
+# Fn und linke Control-Taste tauschen
 echo 1 | sudo tee /sys/module/hid_apple/parameters/swap_fn_leftctrl
 
 # Dauerhafte Konfiguration
-echo 'options hid-apple swap_fn_leftctrl=1' | sudo tee /etc/modprobe.d/keyboard.conf >/dev/null
+echo -e "options hid-apple swap_opt_cmd=1\noptions hid-apple swap_fn_leftctrl=1" | sudo tee /etc/modprobe.d/hid_apple.conf
