@@ -75,14 +75,13 @@ fi
 
 # Cliphist mit Prüfung
 if [[ ! -f /usr/bin/cliphist ]]; then
-  ARCH="$(uname -m)"
-  if [[ "$ARCH" == "aarch64" || "$ARCH" == "armv7l" ]]; then
-    CLIPHIST_URL="https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-arm"
-  else
-    CLIPHIST_URL="https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-amd64"
-  fi
-  sudo wget -O /usr/bin/cliphist "$CLIPHIST_URL"
-  sudo chmod +x /usr/bin/cliphist
+  mkdir -p ${HOME}/repos
+  cd ${HOME}/repos
+  git clone https://github.com/sentriz/cliphist.git
+  cd cliphist
+  go build -o cliphist .
+  sudo cp cliphist /usr/bin/
+  echo "cliphist wurde auf dem System installiert"
 else
   echo "cliphist ist bereits installiert, überspringe Download"
 fi
