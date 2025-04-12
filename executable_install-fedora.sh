@@ -38,7 +38,7 @@ sudo dnf install -y \
   dkms libdrm-devel hplip ydotool pkg-config \
   libxkbcommon-devel scdoc inotify-tools \
   net-snmp-utils net-snmp snmpd virt-manager \
-  @virtualization virt-what
+  @virtualization virt-what mako
 
 ## Multimedia
 sudo dnf install -y \
