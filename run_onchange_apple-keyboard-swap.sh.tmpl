@@ -1,0 +1,16 @@
+#!/bin/bash
+# Config hash: {{ "options hid-apple swap_fn_leftctrl=1" | sha256sum }}
+
+# Überprüfen, ob das System Linux mit aarch64 ist
+if [[ "$(uname -s)" != "Linux" || "$(uname -m)" != "aarch64" ]]; then
+  echo "Dieses Skript ist nur auf Linux mit der Architektur aarch64 ausführbar."
+  exit 0
+fi
+
+echo "Ändere Apple Funktionstaste mit der Kontrolltaste!!!"
+
+# Temporäre Änderung
+echo 1 | sudo tee /sys/module/hid_apple/parameters/swap_fn_leftctrl
+
+# Dauerhafte Konfiguration
+echo 'options hid-apple swap_fn_leftctrl=1' | sudo tee /etc/modprobe.d/keyboard.conf >/dev/null
