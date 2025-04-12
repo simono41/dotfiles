@@ -18,9 +18,7 @@ fi
 brew install --cask wezterm
 brew install git neovim tmux reattach-to-user-namespace starship \
     zsh-completions zsh-autosuggestions zsh-autocomplete fzf ruby \
-    gnupg htop btop asciiquarium lolcat openjdk@17 python python-tk@3.11 \
-    python-gdbm@3.11
-pip3 install pyobjc
+    gnupg htop btop asciiquarium lolcat openjdk python python
 
 # Chezmoi mit Prüfung
 if ! command -v chezmoi &>/dev/null; then
@@ -31,14 +29,13 @@ else
 fi
 
 # Java Symlinks erstellen
-sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
 sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 # Clipboard Tools Installation
 brew install jq choose-gui rg
 
 # Fonts Installation (Nerd Fonts)
-brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font
+brew install --cask font-jetbrains-mono-nerd-font
 
 # Entwicklungswerkzeuge für JetBrains installieren (optional)
 brew install kdoctor cocoapods
