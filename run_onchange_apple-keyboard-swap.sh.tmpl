@@ -19,3 +19,4 @@ echo 1 | sudo tee /sys/module/hid_apple/parameters/swap_fn_leftctrl
 
 # Dauerhafte Konfiguration
 echo -e "options hid_apple swap_opt_cmd=1\noptions hid_apple swap_fn_leftctrl=1" | sudo tee /etc/modprobe.d/hid_apple.conf
+sudo dracut -f
