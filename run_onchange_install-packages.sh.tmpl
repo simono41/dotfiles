@@ -1,3 +1,7 @@
+#!/bin/bash
+
+echo "Packetinstallation hat begonnen, bitte das sudo Passwort nach bedarf eingeben!!!"
+
 {{ if eq .chezmoi.os "linux" -}}
 {{ .chezmoi.homeDir }}/install-fedora.sh
 {{ else if eq .chezmoi.os "darwin" -}}
