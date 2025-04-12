@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 # OS-Überprüfung
@@ -8,13 +7,28 @@ if [[ "$(uname -s)" != "Darwin" ]]; then
   exit 1
 fi
 
+# Homebrew mit Prüfung
+if ! command -v brew &>/dev/null; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+  echo "Homebrew ist bereits installiert, überspringe Installation"
+fi
+
 # Terminal Tools Installation
 brew install --cask wezterm
-brew install neovim tmux reattach-to-user-namespace starship \
+brew install git neovim tmux reattach-to-user-namespace starship \
     zsh-completions zsh-autosuggestions zsh-autocomplete fzf ruby \
     gnupg htop btop asciiquarium lolcat openjdk@17 python python-tk@3.11 \
-    python-gdbm@3.11 pinentry-mac
+    python-gdbm@3.11
 pip3 install pyobjc
+
+# Chezmoi mit Prüfung
+if ! command -v chezmoi &>/dev/null; then
+  brew install chezmoi
+  chezmoi init -v --apply ssh://git@brothertec.eu:1023/simono41/dotfiles.git
+else
+  echo "chezmoi ist bereits installiert, überspringe Installation"
+fi
 
 # Java Symlinks erstellen
 sudo ln -sfn /opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk-17.jdk
@@ -22,12 +36,6 @@ sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVir
 
 # Clipboard Tools Installation
 brew install jq choose-gui rg
-brew install --cask flycut
-
-# Tailscale Installation und Konfiguration
-brew install tailscale
-sudo tailscaled install-system-daemon
-tailscale up --login-server=https://vpn.brothertec.eu --ssh --accept-routes
 
 # Fonts Installation (Nerd Fonts)
 brew tap homebrew/cask-fonts && brew install --cask font-jetbrains-mono-nerd-font

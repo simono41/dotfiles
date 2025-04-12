@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -e
 
 # OS-Überprüfung
@@ -59,15 +58,31 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 # Systemkonfiguration
 sudo usermod -s /bin/zsh simono41
 
-# Zusatzinstallationen mit Architekturprüfung
-curl -sS https://starship.rs/install.sh | sh
-
-ARCH="$(uname -m)"
-if [[ "$ARCH" == "aarch64" || "$ARCH" == "armv7l" ]]; then
-  CLIPHIST_URL="https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-arm"
+# Chezmoi Installation mit Prüfung
+if ! command -v chezmoi &>/dev/null; then
+  sh -c "$(curl -fsLS get.chezmoi.io)"
+  chezmoi init -v --apply --force ssh://git@brothertec.eu:1023/simono41/dotfiles.git
 else
-  CLIPHIST_URL="https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-amd64"
+  echo "chezmoi ist bereits installiert, überspringe Installation"
 fi
 
-sudo wget -O /usr/bin/cliphist "$CLIPHIST_URL"
-sudo chmod +x /usr/bin/cliphist
+# Starship Installation mit Prüfung
+if ! command -v starship &>/dev/null; then
+  curl -sS https://starship.rs/install.sh | sh
+else
+  echo "Starship ist bereits installiert, überspringe Installation"
+fi
+
+# Cliphist mit Prüfung
+if [[ ! -f /usr/bin/cliphist ]]; then
+  ARCH="$(uname -m)"
+  if [[ "$ARCH" == "aarch64" || "$ARCH" == "armv7l" ]]; then
+    CLIPHIST_URL="https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-arm"
+  else
+    CLIPHIST_URL="https://github.com/sentriz/cliphist/releases/download/v0.6.1/v0.6.1-linux-amd64"
+  fi
+  sudo wget -O /usr/bin/cliphist "$CLIPHIST_URL"
+  sudo chmod +x /usr/bin/cliphist
+else
+  echo "cliphist ist bereits installiert, überspringe Download"
+fi

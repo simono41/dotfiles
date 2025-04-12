@@ -1,9 +1,12 @@
 #!/bin/bash
 
-echo "Packetinstallation hat begonnen, bitte das sudo Passwort nach bedarf eingeben!!!"
+# executable_install-fedora.sh hash: {{ include "executable_install-fedora.sh" | sha256sum }}
+# executable_install-macos.sh hash: {{ include "executable_install-macos.sh" | sha256sum }}
+
+echo "Packetinstallation hat begonnen, bitte das sudo Passwort nach Bedarf eingeben!!!"
 
 {{ if eq .chezmoi.os "linux" -}}
-{{ .chezmoi.homeDir }}/install-fedora.sh
+{{ .chezmoi.sourceDir }}/executable_install-fedora.sh
 {{ else if eq .chezmoi.os "darwin" -}}
-{{ .chezmoi.homeDir }}/install-macos.sh
+{{ .chezmoi.sourceDir }}/executable_install-macos.sh
 {{ end -}}
