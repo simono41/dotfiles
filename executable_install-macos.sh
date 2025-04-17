@@ -50,3 +50,5 @@ brew install rbw
 rbw config set email simon@rieger.app
 rbw config set base_url https://vaultwarden.brothertec.eu
 rbw config set pinentry pinentry-mac
+
+echo "Installationscript abgeschlossen!!!"
