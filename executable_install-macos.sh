@@ -43,6 +43,7 @@ brew install kdoctor cocoapods
 # Optionale Tools installieren (Visual Studio Code, Prism Launcher)
 brew install --cask visual-studio-code prismlauncher
 brew install spotify_player
+brew install minio/stable/mc
 
 # RBW (Rust Bitwarden CLI) Installation und Konfiguration
 brew install rbw
