@@ -88,3 +88,15 @@ if [[ ! -f /usr/bin/cliphist ]]; then
 else
   echo "cliphist ist bereits installiert, überspringe Download"
 fi
+
+# MinIO Client mit Prüfung
+if [[ ! -f $HOME/minio-binaries/mc ]]; then
+  curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+    --create-dirs \
+    -o $HOME/minio-binaries/mc
+  echo "MinIO Client wurde auf dem System installiert"
+else
+  echo "MinIO Client ist bereits installiert, überspringe Download"
+fi
+
+echo "Installationscript abgeschlossen!!!"
