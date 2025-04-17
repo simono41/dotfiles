@@ -91,7 +91,7 @@ fi
 
 # MinIO Client mit Prüfung
 if [[ ! -f $HOME/minio-binaries/mc ]]; then
-  curl https://dl.min.io/client/mc/release/linux-amd64/mc \
+  curl https://dl.min.io/client/mc/release/linux-$(uname -m)/mc \
     --create-dirs \
     -o $HOME/minio-binaries/mc
   echo "MinIO Client wurde auf dem System installiert"
