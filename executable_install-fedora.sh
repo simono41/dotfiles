@@ -8,6 +8,7 @@ if [[ "$(uname -s)" != "Linux" ]] || ! grep -Eq '^ID=fedora|^ID_LIKE=.*fedora' /
 fi
 
 # DNF Grundkonfiguration
+sudo dnf update
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
