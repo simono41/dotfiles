@@ -41,9 +41,8 @@
     }
   },
   "notification-visibility": {
-    "example-name": {
+    "mute-spotify": {
       "state": "muted",
-      "urgency": "Low",
       "app-name": "Spotify"
     }
   },
@@ -51,7 +50,10 @@
     "inhibitors",
     "title",
     "dnd",
-    "notifications"
+    "mpris",
+    "notifications",
+    "backlight",
+    "volume"
   ],
   "widget-config": {
     "inhibitors": {
@@ -74,6 +76,14 @@
     "mpris": {
       "image-size": 96,
       "image-radius": 12
+    },
+    "backlight": {
+      "label": "",
+      "device": "intel_backlight",
+      "min": 10
+    },
+    "volume": {
+      "label": ""
     },
     "buttons-grid": {
       "actions": [

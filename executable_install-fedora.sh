@@ -24,7 +24,7 @@ sudo dnf install -y \
   arc-theme hyprlock copyq nwg-dock-hyprland nwg-drawer \
   nwg-panel nwg-launchers cascadia-code-nf-fonts \
   jetbrains-mono-fonts la-capitaine-cursor-theme \
-  la-capitaine-icon-theme
+  la-capitaine-icon-theme flatseal
 
 ## Entwicklung
 sudo dnf install -y \
@@ -57,6 +57,7 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 flatpak install flathub com.vscodium.codium
 flatpak install flathub com.spotify.Client
 flatpak install flathub org.prismlauncher.PrismLauncher
+flatpak install flathub com.github.IsmaelMartinez.teams_for_linux
 
 # Systemkonfiguration
 sudo usermod -s /bin/zsh simono41
