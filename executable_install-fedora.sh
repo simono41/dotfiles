@@ -55,7 +55,7 @@ sudo dnf install -y \
 # Flatpak Setup
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub com.vscodium.codium
-flatpak install com.github.KRTirtho.Spotube
+flatpak install flathub com.spotify.Client
 flatpak install flathub org.prismlauncher.PrismLauncher
 
 # Systemkonfiguration
