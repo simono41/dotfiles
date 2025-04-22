@@ -98,19 +98,19 @@
         },
         {
           "label": "󰐥",
-          "command": "~/.config/hypr/scripts/power.sh shutdown"
+          "command": "bash -c '~/.config/hypr/scripts/power.sh shutdown'"
         },
         {
           "label": "󰜉",
-          "command": "~/.config/hypr/scripts/power.sh reboot"
+          "command": "bash -c '~/.config/hypr/scripts/power.sh reboot'"
         },
         {
           "label": "󰌾",
-          "command": "~/.config/hypr/scripts/power.sh lock"
+          "command": "bash -c '~/.config/hypr/scripts/power.sh lock'"
         },
         {
           "label": "󰍃",
-          "command": "~/.config/hypr/scripts/power.sh exit"
+          "command": "bash -c '~/.config/hypr/scripts/power.sh exit'"
         },
         {
           "label": "󰕾",
