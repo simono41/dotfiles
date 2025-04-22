@@ -2,8 +2,8 @@
 set -e
 
 # OS-Überprüfung
-if [[ "$(uname -s)" != "Linux" ]] || ! grep -q '^ID_LIKE=fedora' /etc/os-release; then
-  echo "Dieses Skript läuft nur unter Fedora Linux" >&2
+if [[ "$(uname -s)" != "Linux" ]] || ! grep -Eq '^ID=fedora|^ID_LIKE=.*fedora' /etc/os-release; then
+  echo "Dieses Skript läuft nur unter Fedora Linux oder Fedora-ähnlichen Distributionen." >&2
   exit 1
 fi
 
