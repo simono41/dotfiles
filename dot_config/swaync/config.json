@@ -54,6 +54,7 @@
     "mpris",
     "notifications",
     "backlight",
+    "backlight#tpacpi",
     "volume",
     "buttons-grid"
   ],
@@ -83,6 +84,11 @@
       "label": "",
       "device": "intel_backlight",
       "min": 10
+    },
+    "backlight#tpacpi": {
+      "label": "",
+      "device": "tpacpi::kbd_backlight",
+      "subsystem": "leds"
     },
     "volume": {
       "label": ""
