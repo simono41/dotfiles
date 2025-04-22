@@ -23,6 +23,7 @@ exec-once = swaync &
 exec-once = waybar & hyprpaper
 exec-once = [workspace 2 silent] firefox
 exec-once = hypridle
+exec-once = [workspace 3 silent] flatpak run com.vscodium.codium
 exec-once = [workspace 4 silent] flatpak run com.spotify.Client
 
 # Bitwarden Window Floating
@@ -36,5 +37,5 @@ exec-once = wl-paste --type image --watch cliphist store # Stores only image dat
 
 # machine-specific configuration
 {{- if eq .chezmoi.hostname "sri-laptop-fedora" }}
-exec-once = [workspace 3 silent] flatpak run com.github.IsmaelMartinez.teams_for_linux
+exec-once = [workspace 5 silent] flatpak run com.github.IsmaelMartinez.teams_for_linux
 {{- end }}
