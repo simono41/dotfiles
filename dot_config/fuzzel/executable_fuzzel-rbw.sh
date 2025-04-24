@@ -41,7 +41,7 @@ if [[ -n "$selected" ]]; then
     # Extrahiere Name und User aus der Auswahl
     name=$(echo "$selected" | awk -F' \\| ' '{print $1}')
     user=$(echo "$selected" | awk -F' \\| ' '{print $2}')
-    
+
     # Hole Details mit beiden Parametern
     details=$(rbw get "$name" "$user" --full 2>/dev/null)
 
@@ -52,7 +52,7 @@ if [[ -n "$selected" ]]; then
 
     # Detailauswahl wie bisher
     selected_detail=$(select_item "Details für $name: " "$details")
-    
+
     if [[ -n "$selected_detail" ]]; then
         cleaned_text=$(clean_text "$selected_detail")
         copy_to_clipboard "$cleaned_text"
@@ -60,13 +60,13 @@ if [[ -n "$selected" ]]; then
 
         # Passwortverarbeitung
         if [[ "$OSTYPE" != "darwin"* ]]; then
-            choice=$(select_item "Passwort mit dotool eingeben? (5s Verzögerung)" "$(echo -e "Ja\nNein")")
+            choice=$(select_item "Passwort mit dotool eingeben?" "$(echo -e "Nein\nJa")")
 
             if [[ "$choice" == "Ja" ]]; then
                 echo "Tippe Passwort in 5 Sekunden (Layout: DE)..."
-                sleep 5 && { 
+                {
                     echo "typedelay 100"
-                    echo "type $cleaned_text" 
+                    echo "type $cleaned_text"
                 } | DOTOOL_XKB_LAYOUT=de dotool && notify-send "Passwort eingetippt"
             fi
         fi
