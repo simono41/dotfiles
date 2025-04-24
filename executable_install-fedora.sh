@@ -116,6 +116,7 @@ if [[ ! -f /usr/local/bin/dotool ]]; then
   git clone https://git.sr.ht/~geb/dotool
   cd dotool
   ./build.sh && sudo ./build.sh install
+  sudo udevadm control --reload && sudo udevadm trigger
   cd
   echo "dotool wurde auf dem System installiert"
 else
