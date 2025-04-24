@@ -57,5 +57,18 @@ if [[ -n "$selected" ]]; then
         cleaned_text=$(clean_text "$selected_detail")
         copy_to_clipboard "$cleaned_text"
         echo "In Zwischenablage kopiert: ${cleaned_text:0:20}..."
+
+        # Passwortverarbeitung
+        if [[ "$OSTYPE" != "darwin"* ]]; then
+            choice=$(select_item "Passwort mit dotool eingeben? (5s Verzögerung)" "$(echo -e "Ja\nNein")")
+
+            if [[ "$choice" == "Ja" ]]; then
+                echo "Tippe Passwort in 5 Sekunden (Layout: DE)..."
+                sleep 5 && { 
+                    echo "typedelay 100"
+                    echo "type $cleaned_text" 
+                } | DOTOOL_XKB_LAYOUT=de dotool && notify-send "Passwort eingetippt"
+            fi
+        fi
     fi
 fi
