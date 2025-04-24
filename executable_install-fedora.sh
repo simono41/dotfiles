@@ -110,7 +110,7 @@ else
 fi
 
 # dotool mit Prüfung
-if [[ ! -f /usr/bin/dotool ]]; then
+if [[ ! -f /usr/local/bin/dotool ]]; then
   mkdir -p ${HOME}/repos
   cd ${HOME}/repos
   git clone https://git.sr.ht/~geb/dotool
