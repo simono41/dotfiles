@@ -93,6 +93,7 @@ if [[ ! -f /usr/bin/cliphist ]]; then
   cd cliphist
   go build -o cliphist .
   sudo cp cliphist /usr/bin/
+  cd
   echo "cliphist wurde auf dem System installiert"
 else
   echo "cliphist ist bereits installiert, überspringe Download"
@@ -106,6 +107,19 @@ if [[ ! -f $HOME/minio-binaries/mc ]]; then
   echo "MinIO Client wurde auf dem System installiert"
 else
   echo "MinIO Client ist bereits installiert, überspringe Download"
+fi
+
+# dotool mit Prüfung
+if [[ ! -f /usr/bin/dotool ]]; then
+  mkdir -p ${HOME}/repos
+  cd ${HOME}/repos
+  git clone https://git.sr.ht/~geb/dotool
+  cd dotool
+  ./build.sh && sudo ./build.sh install
+  cd
+  echo "dotool wurde auf dem System installiert"
+else
+  echo "dotool ist bereits installiert, überspringe Download"
 fi
 
 echo "Installationscript abgeschlossen!!!"
