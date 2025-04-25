@@ -67,7 +67,8 @@ if [[ -n "$selected" ]]; then
                 {
                     echo "typedelay 100"
                     echo "type $cleaned_text"
-                } | DOTOOL_XKB_LAYOUT=de dotool && notify-send "Passwort eingetippt"
+                } | DOTOOL_XKB_LAYOUT=de dotool && \
+                    notify-send -t 5000 -u low "Eingabe abgeschlossen" "Inhalt wurde getippt"
             fi
         fi
     fi
