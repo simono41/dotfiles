@@ -62,7 +62,7 @@ sudo dnf install codium
 
 # Flatpak Setup
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub com.spotify.Client
+#flatpak install flathub com.spotify.Client
 flatpak install flathub com.bitwarden.desktop
 flatpak install flathub org.prismlauncher.PrismLauncher
 flatpak install flathub com.github.IsmaelMartinez.teams_for_linux
