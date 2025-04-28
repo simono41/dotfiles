@@ -123,4 +123,28 @@ else
   echo "dotool ist bereits installiert, überspringe Download"
 fi
 
+# feishin mit Prüfung
+if [[ ! -f ~/Applications/Feishin.AppImage ]]; then
+  # AppImage herunterladen und ausführbar machen
+  mkdir -p ~/Applications
+  wget -O ~/Applications/Feishin.AppImage https://github.com/jeffvli/feishin/releases/download/v0.12.3/Feishin-0.12.3-linux-$(uname -m).AppImage
+  chmod +x ~/Applications/Feishin.AppImage
+
+  # Desktop-Eintrag erstellen
+  mkdir -p ~/.local/share/applications
+  cat > ~/.local/share/applications/feishin.desktop <<EOL
+[Desktop Entry]
+Name=Feishin
+Comment=Modern self-hosted music player
+Exec=$HOME/Applications/Feishin.AppImage
+Icon=multimedia-player
+Terminal=false
+Type=Application
+Categories=Audio;Music;Player;AudioVideo;
+EOL
+  echo "feishin wurde auf dem System installiert"
+else
+  echo "feishin ist bereits installiert, überspringe Download"
+fi
+
 echo "Installationscript abgeschlossen!!!"
