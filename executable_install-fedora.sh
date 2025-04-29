@@ -53,6 +53,11 @@ sudo dnf install -y \
   docker-ce docker-ce-cli containerd.io \
   docker-buildx-plugin docker-compose-plugin
 
+## Aktiviere das COPR-Repository von solopasha/hyprland:
+sudo dnf copr enable solopasha/hyprland
+sudo dnf install satty nwg-look cliphist
+sudo dnf update
+
 ## VSCodium
 sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
 if [ ! -e /etc/yum.repos.d/vscodium.repo ]; then
@@ -84,20 +89,6 @@ if ! command -v starship &>/dev/null; then
   curl -sS https://starship.rs/install.sh | sh
 else
   echo "Starship ist bereits installiert, überspringe Installation"
-fi
-
-# Cliphist mit Prüfung
-if [[ ! -f /usr/bin/cliphist ]]; then
-  mkdir -p ${HOME}/repos
-  cd ${HOME}/repos
-  git clone https://github.com/sentriz/cliphist.git
-  cd cliphist
-  go build -o cliphist .
-  sudo cp cliphist /usr/bin/
-  cd
-  echo "cliphist wurde auf dem System installiert"
-else
-  echo "cliphist ist bereits installiert, überspringe Download"
 fi
 
 # MinIO Client mit Prüfung
