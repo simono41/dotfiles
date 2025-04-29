@@ -25,7 +25,7 @@ sudo dnf install -y \
   arc-theme hyprlock copyq nwg-dock-hyprland nwg-drawer \
   nwg-panel nwg-launchers cascadia-code-nf-fonts \
   jetbrains-mono-fonts la-capitaine-cursor-theme \
-  la-capitaine-icon-theme flatseal qt5ct qt6ct pcmanfm-qt swappy
+  la-capitaine-icon-theme flatseal qt5ct qt6ct pcmanfm-qt lximage-qt swappy
 
 ## Entwicklung
 sudo dnf install -y \
