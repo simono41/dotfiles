@@ -1,14 +1,11 @@
-{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.arch "arm64") }}
 #!/bin/bash
+{{- if and (eq .chezmoi.os "linux") (eq .chezmoi.arch "arm64") }}
 
 echo "Ändere Apple Funktionstaste mit der Kontrolltaste!!!"
 echo "Ändere Apple Commandtaste mit der Altasten!!!"
 
-# Temporäre Änderung
-# Command (⌘) und Alt (⌥) tauschen
+# Temporäre Ändderung
 echo 1 | sudo tee /sys/module/hid_apple/parameters/swap_opt_cmd
-
-# Fn und linke Control-Taste tauschen
 echo 1 | sudo tee /sys/module/hid_apple/parameters/swap_fn_leftctrl
 
 # Dauerhafte Konfiguration
