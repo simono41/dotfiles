@@ -54,7 +54,12 @@ sudo dnf install -y \
   docker-buildx-plugin docker-compose-plugin
 
 ## Aktiviere das COPR-Repository von solopasha/hyprland:
-sudo dnf copr enable solopasha/hyprland
+if dnf copr list | grep -q 'solopasha/hyprland'; then
+  echo "solopasha/hyprland Copr-Repo ist bereits aktiviert"
+else
+  sudo dnf copr enable solopasha/hyprland
+  echo "solopasha/hyprland Copr-Repo wurde hinzugefügt"
+fi
 sudo dnf install satty nwg-look cliphist
 sudo dnf update
 
