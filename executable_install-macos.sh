@@ -51,4 +51,8 @@ rbw config set email simon@rieger.app
 rbw config set base_url https://vaultwarden.brothertec.eu
 rbw config set pinentry pinentry-mac
 
+# Navidrome Client Installation
+brew tap supersonic-app/supersonic
+brew install --no-quarantine supersonic
+
 echo "Installationscript abgeschlossen!!!"
