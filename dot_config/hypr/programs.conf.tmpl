@@ -39,4 +39,5 @@ exec-once = wl-paste --type image --watch cliphist store # Stores only image dat
 # machine-specific configuration
 {{- if eq .chezmoi.hostname "sri-laptop-fedora" }}
 exec-once = [workspace 5 silent] flatpak run com.github.IsmaelMartinez.teams_for_linux
+exec-once = [workspace 6 silent] outlook-for-linux
 {{- end }}
