@@ -2,6 +2,7 @@
 application/json=userapp-wezterm-vim-LS2K41.desktop;code-oss.desktop;
 application/pdf=org.gnome.Evince.desktop;
 application/rss+xml=userapp-Thunderbird-4BW691.desktop;
+application/x-compressed-tar=org.kde.ark.desktop;
 application/x-extension-htm=firefox.desktop;
 application/x-extension-html=firefox.desktop;
 application/x-extension-rss=userapp-Thunderbird-4BW691.desktop;
@@ -10,8 +11,8 @@ application/x-extension-xht=firefox.desktop;
 application/x-extension-xhtml=firefox.desktop;
 application/xhtml+xml=firefox.desktop;
 application/zip=org.kde.ark.desktop;
-image/png=lximage-qt-2.desktop;org.kde.gwenview.desktop;lximage-qt.desktop;
-inode/directory=dolphin.desktop;
+image/png=org.kde.gwenview.desktop;lximage-qt-2.desktop;lximage-qt.desktop;
+inode/directory=org.kde.dolphin.desktop;dolphin.desktop;
 text/html=firefox.desktop;
 text/plain=code.desktop
 text/x-log=codium.desktop;
@@ -30,6 +31,7 @@ x-scheme-handler/webcals=userapp-Thunderbird-6HQ691.desktop;
 
 [Default Applications]
 application/rss+xml=userapp-Thunderbird-4BW691.desktop
+application/x-compressed-tar=org.kde.ark.desktop;
 application/x-extension-htm=firefox.desktop
 application/x-extension-html=firefox.desktop
 application/x-extension-ics=userapp-Thunderbird-6HQ691.desktop
@@ -39,8 +41,8 @@ application/x-extension-xht=firefox.desktop
 application/x-extension-xhtml=firefox.desktop
 application/xhtml+xml=firefox.desktop
 application/zip=org.kde.ark.desktop;
-image/png=lximage-qt-2.desktop;
-inode/directory=dolphin.desktop;
+image/png=org.kde.gwenview.desktop;
+inode/directory=org.kde.dolphin.desktop;
 message/rfc822=userapp-Thunderbird-5B6Z91.desktop
 text/calendar=userapp-Thunderbird-6HQ691.desktop
 text/html=firefox.desktop
