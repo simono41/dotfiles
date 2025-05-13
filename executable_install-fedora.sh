@@ -78,6 +78,7 @@ flatpak install flathub io.github.dweymouth.supersonic
 flatpak install flathub com.bitwarden.desktop
 flatpak install flathub org.prismlauncher.PrismLauncher
 flatpak install flathub com.github.IsmaelMartinez.teams_for_linux
+flatpak install flathub dev.linwood.butterfly
 
 # Systemkonfiguration
 sudo usermod -s /bin/zsh simono41
