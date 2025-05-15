@@ -12,6 +12,16 @@ sudo dnf update
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
 
+## Aktiviere das COPR-Repository von solopasha/hyprland:
+if dnf copr list | grep -q 'solopasha/hyprland'; then
+  echo "solopasha/hyprland Copr-Repo ist bereits aktiviert"
+else
+  sudo dnf copr enable solopasha/hyprland
+  echo "solopasha/hyprland Copr-Repo wurde hinzugefügt"
+fi
+sudo dnf install satty nwg-look cliphist
+sudo dnf update
+
 # Paketinstallationen gruppiert
 ## Shell-Tools
 sudo dnf install -y \
@@ -26,7 +36,8 @@ sudo dnf install -y \
   nwg-panel nwg-launchers cascadia-code-nf-fonts \
   jetbrains-mono-fonts la-capitaine-cursor-theme \
   la-capitaine-icon-theme flatseal qt5ct qt6ct \
-  pcmanfm-qt lximage-qt swappy kvantum arc-kde-kvantum materia-kde-kvantum
+  pcmanfm-qt lximage-qt swappy kvantum arc-kde-kvantum \
+  materia-kde-kvantum hyprpaper
 
 ## Entwicklung
 sudo dnf install -y \
@@ -53,16 +64,6 @@ sudo dnf install -y \
 sudo dnf install -y \
   docker-ce docker-ce-cli containerd.io \
   docker-buildx-plugin docker-compose-plugin
-
-## Aktiviere das COPR-Repository von solopasha/hyprland:
-if dnf copr list | grep -q 'solopasha/hyprland'; then
-  echo "solopasha/hyprland Copr-Repo ist bereits aktiviert"
-else
-  sudo dnf copr enable solopasha/hyprland
-  echo "solopasha/hyprland Copr-Repo wurde hinzugefügt"
-fi
-sudo dnf install satty nwg-look cliphist
-sudo dnf update
 
 ## VSCodium
 sudo rpmkeys --import https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/-/raw/master/pub.gpg
