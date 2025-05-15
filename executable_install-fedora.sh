@@ -132,7 +132,7 @@ else
     echo "$PACKAGE ist nicht installiert. Starte Download und Installation..."
     cd /tmp
     wget https://github.com/mahmoudbahaa/outlook-for-linux/releases/download/v1.3.14-outlook/outlook-for-linux-1.3.14.$(uname -m).rpm
-    sudo rpm -ivh outlook-for-linux-1.3.14.x86_64.rpm
+    sudo rpm -ivh outlook-for-linux-1.3.14.$(uname -m).rpm
     cd
 fi
 
